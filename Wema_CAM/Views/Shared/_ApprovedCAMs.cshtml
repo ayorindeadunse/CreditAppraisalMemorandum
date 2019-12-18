@@ -1,0 +1,139 @@
+﻿@*@model PagedList.IPagedList<Wema_CAM.PendingCamList>
+@using PagedList.Mvc; *@
+
+@model IEnumerable<Wema_CAM.PendingCamList>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+<script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jtable/jquery.jtable.js")" type="text/javascript"></script>
+
+<style>
+   
+    .tblboda1 {
+         border-width: 3px;
+    border-style: solid;
+    border-color: #CCCCCC;
+    padding: 5px;  
+    max-width:100%;
+      /*padding-right: 0px;  
+      padding-bottom: 0.25in;  
+      padding-left: 5em;*/  
+    }
+    
+   
+</style>
+   <form action='@Url.Action("Index","ApprovedCAMS")' method="post" >
+      <h3>Search for Customer</h3> <input type="text" name="customersearch" id="customersearch" /> OR <h3>Search Using CAM ID</h3><input type="text" name="CAMID" id="CAMID" />
+
+  <input type="submit" id="searchexistingcams" value="Search" />
+<div>
+<table>
+    <tr>
+        <th>
+            CAM Id
+        </th>
+        
+        <th>
+           Initiated By
+        </th>       
+        <th>
+            Current Location
+        </th> 
+        <th>
+            Customer Name
+        </th>
+       @* <th>
+            Date Initiated
+        </th> *@
+        <th>
+            Facility Type
+        </th>
+         <th>
+            Facility Amount
+        </th>
+       @* <th>
+            Time Elapsed
+        </th>*@
+        <th>
+            Date Last Updated
+        </th>
+      
+       
+           <th>
+            Status
+        </th>      
+              
+    </tr>
+
+      @*  @if(ViewBag.CAM != null)
+        {
+        foreach (Wema_CAM.PendingCamList c in ViewBag.CAM) {
+      
+    *@
+    
+    @foreach(var item in Model) {
+          <tr>
+        <td>
+            @item.camid
+        </td>
+        <td>
+            @item.initiatedby
+        </td>
+        <td>
+            @item.destinationuser
+        </td>
+        <td>
+            @item.customername
+        </td>
+
+       @* <td>
+            @c.dateinitiated
+        </td>*@
+        <td>
+            @item.facilitytype
+        </td>
+         <td>
+          @item.facilityamount
+        </td>
+       
+         <td>
+            @item.datelastupdated
+        </td>
+      
+       
+        <td>
+            @item.status     
+               </td>
+        
+
+        @if(item.status == "Approved")
+        {
+       <td>        
+           @Html.ActionLink("Details", "Details", "CAMDetails", new { Id = item.camid },"")
+           
+        </td>
+        }
+        
+       
+        
+       
+        
+        
+             
+    </tr>
+}
+
+}
+        
+</table>
+   
+        @*   @Html.PagedListPager( Model, page => Url.Action("Index", new { page }) )*@
+
+
+</div>
+
+       </form>

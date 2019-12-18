@@ -1,0 +1,528 @@
+﻿@model IEnumerable<Wema_CAM.Models.CAM>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.min.js")" type="text/javascript"></script>
+
+<style>
+    .tblboda {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+    padding: 5px;  
+      /*padding-right: 0px;  
+      padding-bottom: 0.25in;  
+      padding-left: 5em;*/  
+      max-width:1500px;
+    }
+
+    .tblboda1 {
+         border-width: 3px;
+    border-style: solid;
+    border-color: #000000;
+    padding: 5px;  
+    max-width:1500px;
+      /*padding-right: 0px;  
+      padding-bottom: 0.25in;  
+      padding-left: 5em;*/  
+    }
+    
+   
+</style>
+
+
+<h2>CAM Reports</h2>
+<br />
+<div id="dialog-message" title="Message"></div>
+<h3><b>Search Criteria</b></h3>
+   @* @Html.ActionLink("Create New", "Create")*@
+@using (Html.BeginForm())
+{
+     <div class="tblboda">
+    <h3>Select Region</h3>
+   
+<p>
+    @Html.DropDownList("Regions", (SelectList)ViewBag.Regions, "")                      
+</p>
+    
+    <h3>Select Status</h3>
+      @Html.DropDownList("Status", (SelectList)ViewBag.Status, "")
+<br />
+         <br />
+         <h2><b>Period</b></h2>
+    <h3>Enter Start Date:</h3>
+    <input type="text" id="startdate" name="startdate"/>
+    <h3>Enter End Date:</h3>
+    <input type="text" id="enddate" name="enddate" />
+<p>
+   <input type="submit" value="Generate Report" />
+       </p>
+<br />
+    <br />
+        </div>
+    <h2>Results</h2>
+    <div id="reportList1">
+<table class="tblboda1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CAMId)
+        </th>
+     @*   <th>
+            @Html.DisplayNameFor(model => model.ApplicantID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SummaryOfCreditRequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ownership)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BoardAndManagement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProfileOfBoardAndManagement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HistoryAndScopeOfOperation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BorrowingPowerOfDirectors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IndustryAnalysis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BackgroundToTheRequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountPerformanceWithWemaBank)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HighlightsOfOtherPerformanceIndicators)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SwingAnalysisForLastSixMonths)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentsOnAccountPerformance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountPerformanceWithOtherBanks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProportionalAnalysisOfCompanyTurnover)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalBorrowingFromWemaAndOtherBanks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelatedFacilities)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExistingBorrowingFromOtherBanks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditCheckOnCRMS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinancialReview)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CapitalAdequacy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDynamics)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConditionsPrecedentToDrawdown)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConditionsAfterDrawdown)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RiskControlMeasures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KeyRisksAndMitigatingMeasures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JustificationForTheCredit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Security)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Guarantee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditRiskRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegionalExecutiveComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditQualityAssuranceReview)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Recommendation)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.RegionProcessedFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalFacilityAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InitiatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DestinationUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateLastUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateUserId)
+        </th>
+        <th></th>
+    </tr>
+
+   
+    @if (ViewBag.RegionsCredit == null)
+    {
+
+    }
+    else
+    {
+        foreach (Wema_CAM.Models.CAM cc in ViewBag.RegionsCredit)
+        {
+        <tr>
+        <td>
+            @cc.CAMId
+        </td>
+            <td>
+                @cc.RegionProcessedFrom
+            </td>
+            <td>
+                @cc.TotalFacilityAmount
+            </td>
+            <td>
+                @cc.Status
+            </td>
+            <td>
+                @cc.InitiatedBy
+            </td>
+            <td>
+                @cc.DestinationUserId
+            </td>
+            <td>
+                @cc.CreationDate
+            </td>
+            <td>
+                @cc.DateLastUpdated
+            </td>
+            <td>
+                @cc.UpdateUserId
+            </td>
+            <td>
+                 @Html.ActionLink("Details", "Details", "CAMDetails", new { Id = cc.CAMId }, "")
+            </td>
+            </tr>
+        }
+    }
+
+    
+</table>
+        </div>
+    <br />
+        <br />
+       <input type="button" id="btnExport" value="Export To Excel" />
+}
+    
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h2>Applicants-Brief/Credit Summary Reports</h2>
+<br />
+<h3><b>Search Criteria</b></h3>
+<div class="tblboda">
+    <h3>Customer Name</h3>
+    <input type="text" id="customer" name="customer" />
+    <br />
+<h3>Select Facility Type</h3>
+     @Html.DropDownList("FacilityType", (SelectList)ViewBag.FacilityType, "")
+    <br />
+    <h3>Facility Limit</h3>
+    <input type="text" id="facilitylimit" name="facilitylimit" />
+    <h3>Facility Tenor</h3>
+    <input type="text" id="tenor" name="tenor" />
+    <br />
+    <h3>Application Type</h3>
+    @Html.DropDownList("ApplicationType", (SelectList)ViewBag.ApplicationType, "")
+    <br />
+    <h3>Proposed collateral for facilities</h3>
+    <input type="text" id="security" name="security" />
+    <br />
+    <h3>Credit customers in a particular industry</h3>
+     @Html.DropDownList("IndustryType", (SelectList)ViewBag.IndustryType, "")
+    <br />
+    <h3>Select Status</h3>
+      @Html.DropDownList("StatusType", (SelectList)ViewBag.Status, "")
+    <br />
+    <h3>Interest Rate</h3>
+    <input type="text" id="interestrate" name="interestrate" />
+    <br />
+
+    <h3>Processing Fee</h3>
+    <input type="text" id="processingfee" name="processingfee" />
+    <br />
+    <h2><b>Period</b></h2>
+    <h3>Enter Start Date:</h3>
+    <input type="text" id="startdate1" name="startdate"/>
+    <h3>Enter End Date:</h3>
+    <input type="text" id="enddate1" name="enddate" />
+    <br />
+    <br />
+    <p>
+   <input type="submit" name="generateappbriefreport" id="generateappbriefreport" value="Generate Report" />     <input type="button" id="btnExport1" value="Export To Excel" />
+
+       </p>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    </div>
+<h2>Results</h2>
+<div id="reportlist">
+    <table class="tblboda1">
+    <tr>
+        <th>
+            CAM Id
+        </th>
+        <th>
+           Status
+        </th>
+        <th>
+           Facility Type
+        </th>
+        <th>
+            Facility Limit
+        </th>
+        <th>
+            Facility Tenor
+        </th>
+        <th>
+            Application Type
+        </th>
+        <th>
+           Collateral
+        </th>
+        <th>
+           Interest Rate
+        </th>
+        <th>
+           Proposed Fees
+        </th>
+        <th>
+            Customer
+        </th>
+        <th>
+            Date Created
+        </th>
+    </tr>
+        
+
+   
+    @if (ViewBag.CreditRequests == null)
+    {
+
+    }
+    else
+    {
+        foreach (Wema_CAM.creditrequestobjects cc in ViewBag.CreditRequests)
+        {
+        <tr>
+        <td>
+            @cc.applicantid
+        </td>
+            <td>
+                @cc.camid
+            </td>
+            <td>
+                @cc.status
+            </td>
+            <td>
+                @cc.facilitytype
+            </td>
+            <td>
+                @cc.facilitylimit
+            </td>
+            <td>
+                @cc.facilitytenor
+            </td>
+            <td>
+                @cc.applicationtype
+            </td>
+            <td>
+                @cc.collateral
+            </td>
+            <td>
+                @cc.interestrate
+            </td>
+            <td>
+                @cc.proposedfees
+            </td>
+            <td>
+                @cc.customer
+            </td>
+             <td>
+                @cc.DateCreated
+            </td>
+            <td>
+                 @Html.ActionLink("Details", "Details", "CAMDetails", new { Id = cc.camid }, "")
+            </td>
+            </tr>
+        }
+    }
+
+    
+</table>
+   @* <br />
+        <br />
+       <input type="button" id="btnExport1" value="Export To Excel" />*@
+
+    </div>
+    
+
+    
+
+
+
+<script type="text/javascript">
+$(function() {
+    $('#startdate').datepicker();
+});
+$(function () {
+    $('#enddate').datepicker();
+});
+$(function () {
+    $('#startdate1').datepicker();
+});
+$(function () {
+    $('#enddate1').datepicker();
+});
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($("#generateappbriefreport").click(function (e) {
+ e.preventDefault();
+               $.ajax({
+     type: "POST",
+     url: "/WemaCAM/CAMReports/GenerateOtherReports",
+     datatype: "html",
+     data: {
+     customer: $("#customer").val(),
+     FacilityType: $("#FacilityType").val(),
+     facilitylimit: $("#facilitylimit").val(),
+     tenor: $("#tenor").val(),
+     ApplicationType: $("#ApplicationType").val(),
+     security: $("#security").val(),
+     IndustryType: $("#IndustryType").val(),
+     StatusType: $("#StatusType").val(),
+     interestrate: $("#interestrate").val(),
+     processingfee: $("#processingfee").val(),
+     startdate1: $("#startdate1").val(),
+     enddate1: $("#enddate1").val(),
+ },
+     success: function (data, textStatus, jqXHR) {
+
+            $("#dialog-message").text(data.Message);
+            $("#reportlist").html(data.Feedback);
+                       $("#dialog-message").dialog({
+     modal: true,
+     buttons: {
+     Ok: function () {
+                                   $(this).dialog("close");
+ },
+
+ }});
+
+ }});;;
+        }));
+    })
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnExport").click(function (e) {
+            //window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('div[id$=reportList1]').html()));
+           
+            window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('div[id$=reportList1]').html()));
+            
+            e.preventDefault();
+        });
+    });
+
+    $(document).ready(function () {
+        $("#btnExport1").click(function (e) {
+            //window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('div[id$=reportList1]').html()));
+           
+            window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('div[id$=reportlist]').html()));
+
+            e.preventDefault();
+        });
+    });
+
+    //$(document).ready(function () {
+    //    $("#btnExport").click(function (e) {
+    //        var msg = GetMimeTypes();
+    //        //OpenOffice
+    //        window.open('data:application/vnd.oasis.opendocument.spreadsheet,' + $('#reportList1').html());
+    //        //MS-Excel
+    //        window.open('data:application/vnd.ms-excel,' + $('#reportList1').html());
+    //        //CSV
+    //        window.open('data:application/csv,charset=utf-8,' + $('#reportList1').html());
+    //        e.preventDefault();
+    //    });
+    //});
+
+    //function GetMimeTypes() {
+    //    var message = "";
+    //    // Internet Explorer supports the mimeTypes collection, but it is always empty
+    //    if (navigator.mimeTypes && navigator.mimeTypes.length > 0) {
+    //        var mimes = navigator.mimeTypes;
+    //        for (var i = 0; i < mimes.length; i++) {
+    //            message += "<b>" + mimes[i].type + "</b> : " + mimes[i].description + "<br />";
+    //        }
+    //    }
+    //    else {
+    //        message = "Your browser does not support this ";
+    //        //sorry!
+    //    }
+
+    //    return (message);
+    
+    </script>

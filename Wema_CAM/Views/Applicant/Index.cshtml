@@ -1,0 +1,610 @@
+﻿@model PagedList.IPagedList<Wema_CAM.PendingCamList>
+@using PagedList.Mvc; 
+
+@*@model IEnumerable<Wema_CAM.Models.CAM>*@
+
+@*@model IEnumerable<Wema_CAM.PendingCamList>*@
+
+
+@{
+    ViewBag.Title = "Index";
+}
+<script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jtable/jquery.jtable.js")" type="text/javascript"></script>
+
+<style>
+   
+    .tblboda1 {
+         border-width: 3px;
+    border-style: solid;
+    border-color: #CCCCCC;
+    padding: 5px;  
+    max-width:100%;
+      /*padding-right: 0px;  
+      padding-bottom: 0.25in;  
+      padding-left: 5em;*/  
+    }
+    
+   
+</style>
+   <form action='@Url.Action("Index","Applicant")' method="post" >
+<h2></h2>
+   
+     
+        
+<div id="tabs">
+   
+    
+    
+  <ul>
+    <li><a href="#tabs-1">Existing CAMs</a></li>
+    <li><a href="#tabs-2">Create Applicants Brief</a></li>
+     @* <li><a href="#tabs-3">Use Existing CAM Template</a></li>*@
+  </ul>
+  <div id="tabs-2">
+        <div id="FormTemplate"></div>
+      <input type="button" id="createcam" value="Create CAM" />
+
+  </div>
+  <div id="tabs-1">
+      <!--put existing cam here--->
+  <h3>Search for Customer</h3> <input type="text" name="customersearch" id="customersearch" /> OR <h3>Search Using CAM ID</h3><input type="text" name="CAMID" id="CAMID" />
+    
+      <input type="submit" id="searchexistingcams" value="Search" />
+      
+    <h4>List of CAMs done by @Session["Username"].ToString()</h4>
+    <table>
+    <tr>
+        <th>
+            CAM Id
+        </th>
+        
+        <th>
+           Initiated By
+        </th>       
+        <th>
+            Current Location
+        </th> 
+        <th>
+            Customer Name
+        </th>
+       @* <th>
+            Date Initiated
+        </th> *@
+        <th>
+            Facility Type
+        </th>
+         <th>
+            Facility Amount
+        </th>
+       @* <th>
+            Time Elapsed
+        </th>*@
+        <th>
+            Date Last Updated
+        </th>
+        <th>
+            Time Elapsed
+        </th>
+       
+           <th>
+            Status
+        </th>      
+              
+    </tr>
+
+        @if(ViewBag.CAM != null)
+        {
+        foreach (Wema_CAM.PendingCamList c in ViewBag.CAM) {
+    <tr>
+        <td>
+            @c.camid
+        </td>
+        <td>
+            @c.initiatedby
+        </td>
+        <td>
+            @c.destinationuser
+        </td>
+        <td>
+            @c.customername
+        </td>
+
+       @* <td>
+            @c.dateinitiated
+        </td>*@
+        <td>
+            @c.facilitytype
+        </td>
+         <td>
+          @c.facilityamount
+        </td>
+        @*<td>@{
+            ;
+            //DateTime today = DateTime.Now;
+            TimeSpan ts = DateTime.Now.Subtract(c.dateinitiated);
+
+            //Get the number of seconds elapsed
+            //decimal secondselapsed = decimal.Parse(ts.TotalSeconds.ToString());
+              //@(ts.TotalDays.ToString())
+            string output = string.Format("{0:D2} hrs, {1:D2} mins, {2:D2} secs", ts.Hours, ts.Minutes, ts.Seconds);
+            @output 
+        }
+            </td>*@
+         <td>
+            @c.datelastupdated
+        </td>
+        <td>@{
+            ;
+            //DateTime today = DateTime.Now;
+            TimeSpan ts1 = DateTime.Now.Subtract(c.datelastupdated);
+
+            //Get the number of seconds elapsed
+            //decimal secondselapsed = decimal.Parse(ts.TotalSeconds.ToString());
+              //@(ts.TotalDays.ToString())
+            string output1 = string.Format("{0:D2} hrs, {1:D2} mins, {2:D2} secs", ts1.Hours, ts1.Minutes, ts1.Seconds);
+            @output1 
+        }
+            </td>
+       
+            @*decimal timeelapsedinseconds = secondselapsed / 1;
+            
+           
+      
+        @foreach (decimal secondselapsed in ViewBag.TotalSecondsCAMElapsed) {
+            if (secondselapsed > 1 && secondselapsed < 60)
+            {
+                decimal timeelapsedinseconds = secondselapsed/1;
+                <td>
+                    @Math.Round(timeelapsedinseconds,0) seconds pending
+                </td>
+        }
+        else if(secondselapsed > 60 && secondselapsed < 3600) {
+            decimal timeelapsedinminutes = secondselapsed/60;
+            <td>
+                @Math.Round(timeelapsedinminutes,0) minutes pending
+            </td>
+        }
+            else if(secondselapsed > 3600 && secondselapsed < 86400){
+                decimal timeelapsedinhours = secondselapsed/3600;
+                <td>
+                    @Math.Round(timeelapsedinhours,0) hours pending
+                </td>      
+        }
+        else if(secondselapsed > 86400 && secondselapsed < 604800){
+            decimal timeelapsedindays = secondselapsed/86400;
+            <td>
+                @Math.Round(timeelapsedindays,0) days pending
+            </td>
+        }
+        else if(secondselapsed > 604800 && secondselapsed < 31449600){
+            decimal timeelapsedinweeks = secondselapsed/604800;
+            <td>
+                @Math.Round(timeelapsedinweeks,0) weeks pending
+                </td>
+        }
+        else if(secondselapsed > 31449600){
+            decimal timeelapsedinyears = secondselapsed/31449600;
+            <td>
+                @Math.Round(timeelapsedinyears,0) years pending
+            </td>
+        }
+        *@<td>
+            @c.status     
+               </td>
+        
+
+        @if((c.initiatedby == c.destinationuser)&&(c.status == "Pending"))
+        {
+       <td>        
+           @Html.ActionLink("Edit", "Edit", "CAMForm", new { Id = c.camid },"")
+           
+        </td>
+        }
+        
+        else if(c.status == "Pending" && c.destinationuser != c.initiatedby)
+            {
+       <td>        
+           @Html.ActionLink("Details", "Details", "CAMDetails", new { Id = c.camid },"")
+           
+        </td> 
+            
+        }
+       
+        
+        
+             
+    </tr>
+}
+
+}
+        
+</table>
+   @Html.PagedListPager( Model, page => Url.Action("Index", new { page }) ) 
+
+  </div>
+
+  
+    <br />
+    <br />
+    <br />
+   
+   @* <h3>List of Approved CAMs</h3>*@
+        @* <input type="text" name="customersearch1" id="customersearch1" />
+          <input type="submit" id="searchexistingcams1" value="Search" />*@
+    
+   
+  
+    
+    <div id="dialog-message" title="Message"></div>
+    
+</div>
+     </form>  
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#tabs").tabs();
+        $('#FormTemplate').jtable({
+            title: 'List of Applicants Brief',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            defaultSorting: 'Name ASC', //Set default sorting
+            selecting:true,
+            multiselect: false,//Disable multiple selection of records
+            selectingCheckboxes: true,
+            actions: {
+                listAction: 'Applicant/GetApplicantsList',
+                //deleteAction: 'Applicant/DeleteApplicant',
+                updateAction: 'Applicant/EditApplicant',
+                createAction: 'Applicant/AddApplicant'
+            },
+            //toolbar: {
+            //    items: [{
+            //       // icon: '/Images/excelicon.jpg',
+            //        text: 'Export to Excel',
+            //        click: function () {
+            //            //perform your custom job...
+            //        }
+            //    }, {
+            //      //  icon: '/Images/pdficon.jpg',
+            //        text: 'Export to Pdf',
+            //        click: function () {
+            //            //perform your custom job...
+            //        }
+            //    }]
+            //},
+                
+            fields: {
+                ApplicantID: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                ApplicantType: {
+                   title: 'Applicant Type',
+                   width: '23%',
+                   options:'Applicant/GetApplicantType'
+                },
+                CustomerID: {
+                    title: 'Customer ID',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                },
+                AccountNumber: {
+                    title: 'Account Number(Must be 10 digits with no text)',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                },
+                LegalIdentityName: {
+                    title: 'Legal Identity Name',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                YearOfIncorporation: {
+                    title: 'Year Of Incorporation(4 digits with no text)',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+
+                RCNumber: {
+                    title: 'RC Number',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                },
+               
+                BusinessAddress: {
+                    title: 'Business Address',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                NameOfAuditors: {
+                    title: 'Name Of Auditors',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                NatureOfBusiness: {
+                    title: 'Nature Of Business',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                Industry: {
+                    title: 'Sector',
+                    width: '23%',
+                    options: 'Applicant/GetIndustry'
+                }
+                ,
+
+                ProductRange: {
+                    title: 'Product Range',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                MajorClients: {
+                    title: 'Major Clients',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,                         
+                CreationDate: {
+                    title: 'Date Created',
+                    width: '23%',
+                    create: false,
+                    edit: false,
+                    list:false
+                }
+                ,
+                DateLastUpdated: {
+                    title: 'Date Updated',
+                    width: '23%',
+                    create: false,
+                    edit: false,
+                    list:false
+                }
+                ,              
+                UpdateUserId: {
+                    title: 'Updated by',
+                    width: '23%',
+                    create: false,
+                    edit: false,
+                    list:false
+                }
+
+                
+            }
+
+        });
+
+        //Load student list from server
+        $('#FormTemplate').jtable('load');
+    });
+ 
+</script>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicantID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicantType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LegalIdentityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearOfIncorporation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RCNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusinessAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameOfAuditors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NatureOfBusiness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Industry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductRange)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MajorClients)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateLastUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateUserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicantID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicantType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LegalIdentityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearOfIncorporation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RCNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusinessAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameOfAuditors)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NatureOfBusiness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Industry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductRange)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MajorClients)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateLastUpdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateUserId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>*@
+
+<script type="text/javascript">
+  
+    $(document).ready(function () {
+        $("#createcam").click(function (e) {
+            e.preventDefault();
+            var $selectedRows = $('#FormTemplate').jtable('selectedRows');
+            $selectedRows.each(function () {
+                var record = $(this).data('record');
+                var applicantid = record.ApplicantID;
+                
+                // window.location.href = '/CreditRequest/Index/' + applicantid;
+               // var notSeen = localStorage['seen'];
+               // if (!notSeen) {
+                    // open popup
+              //  Session['appid'] = applicantid;
+           
+              // window.location.href = '/WemaCAM/CreditRequest/Create/' + applicantid;
+               window.location.href = '/CreditRequest/Create/' + applicantid;
+               // }
+            });
+           
+        });
+    });
+
+</script>
+
+@*<script type="text/javascript">
+    $(function () {
+        $('#ssstartdate').datepicker();
+    });
+    $(function () {
+        $('#eeendate').datepicker();
+    });
+</script>*@
+
+@*<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#createcam").click(function (e) {
+            e.preventDefault();
+            var $selectedRows = $('#FormTemplate').jtable('selectedRows');
+            $selectedRows.each(function () {
+                var record = $(this).data('record');
+                var applicantid = record.ApplicantID;
+
+                // window.location.href = '/CreditRequest/Index/' + applicantid;
+                // var notSeen = localStorage['seen'];
+                // if (!notSeen) {
+                // open popup
+                //  Session['appid'] = applicantid;
+
+                window.location.href = '/WemaCAM/CreditRequest/Create/' + applicantid;
+                // }
+            });
+
+        });
+    });
+
+</script>*@
+
+@*<script type ="text/javascript">
+    //Approve Button click
+    $(document).ready(function () {
+        if ($("#searchTemplate").click(function (e) {
+               e.preventDefault();
+               $.ajax({
+            type: "POST",
+                url: "/WemaCAM/Applicant/retrieveTemplateCams",
+           // datatype: "html",
+            data: {
+            sstartdate: $("#sstartdate").val(),
+                eenddate: $("#eenddate").val,
+        },
+            success: function (data, textStatus, jqXHR) {
+
+            $("#dialog-message").text(data.Message);
+           // $("#commentlist").html(data.Feedback);
+           // $("#comment").val("");
+                       $("#dialog-message").dialog({
+            modal: true,
+            buttons: {
+            Ok: function () {
+                                   $(this).dialog("close");
+        }
+        }
+        });
+        }
+        });
+        }));
+    });
+
+</script>*@
+
+

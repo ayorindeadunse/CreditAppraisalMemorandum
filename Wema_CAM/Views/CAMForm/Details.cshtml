@@ -1,0 +1,306 @@
+﻿@model Wema_CAM.Models.CAM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>CREDIT APPRAISAL MEMORANDUM DETAILS</h2>
+
+<fieldset>
+    <legend>CAM</legend>
+    
+     <div class="display-label">
+        <h3> @Html.DisplayNameFor(model => model.CreationDate)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.CreationDate)
+    </div>
+
+    <div class="display-label">
+       <h3> @Html.DisplayNameFor(model => model.DateLastUpdated)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.DateLastUpdated)
+    </div>
+
+    <div class="display-label">
+       <h3> @Html.DisplayNameFor(model => model.UpdateUserId)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.UpdateUserId)
+    </div>
+    <div>
+    <h3>2.0 SUMMARY OF CREDIT REQUEST</h3>
+        </div>
+    
+    <br />
+     <h3>3.0 DIRECTORS AND SHAREHOLDERS’ DETAILS</h3>
+    <br />
+    <div class="display-label">
+         <h3>3.1 @Html.DisplayNameFor(model => model.Ownership)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.Ownership)
+    </div>
+    <br />
+    <div class="display-label">
+        <h3>3.2 @Html.DisplayNameFor(model => model.BoardAndManagement)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.BoardAndManagement)
+    </div>
+    
+    <div class="display-label">
+        <h3>3.3 @Html.DisplayNameFor(model => model.ProfileOfBoardAndManagement)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.ProfileOfBoardAndManagement)
+    </div>
+
+    <h3>4.0 OBLIGOR’S BUSINESS BACKGROUND AND SCOPE OF OPERATION</h3>
+    <div class="display-label">
+       <h3>4.2 @Html.DisplayNameFor(model => model.HistoryAndScopeOfOperation)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.HistoryAndScopeOfOperation)
+    </div>
+
+    <div class="display-label">
+        <h3>4.3 @Html.DisplayNameFor(model => model.BorrowingPowerOfDirectors)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.BorrowingPowerOfDirectors)
+    </div>
+
+    <div class="display-label">
+        <h3>5.0 @Html.DisplayNameFor(model => model.IndustryAnalysis)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.IndustryAnalysis)
+    </div>
+
+    <h3>6.0 THE REQUEST</h3>
+    <div class="display-label">
+        <h3>6.1 @Html.DisplayNameFor(model => model.BackgroundToTheRequest)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.BackgroundToTheRequest)
+    </div>
+
+    <div class="display-label">
+        <h3>6.2 @Html.DisplayNameFor(model => model.TransactionDetails)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.TransactionDetails)
+    </div>
+
+    <div class="display-label">
+        <h3>7.0 @Html.DisplayNameFor(model => model.AccountPerformanceWithWemaBank)</h3>
+        <h3>7.1 LENGTH OF RELATIONSHIP</h3>
+        <H3>7.2 ACCOUNT TURNOVER AND EARNINGS FOR THE LAST 5 MONTHS</H3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.AccountPerformanceWithWemaBank)
+    </div>
+
+    <div class="display-label">
+         <h3>7.3 @Html.DisplayNameFor(model => model.HighlightsOfOtherPerformanceIndicators)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.HighlightsOfOtherPerformanceIndicators)
+    </div>
+
+   
+    <div class="display-label">
+        <h3>7.4 @Html.DisplayNameFor(model => model.Balance)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.Balance)
+    </div>
+
+    <div class="display-label">
+        <h3>7.6 @Html.DisplayNameFor(model => model.SwingAnalysisForLastSixMonths)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.SwingAnalysisForLastSixMonths)
+    </div>
+
+    <div class="display-label">
+       <h3>7.7 @Html.DisplayNameFor(model => model.CommentsOnAccountPerformance)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.CommentsOnAccountPerformance)
+    </div>
+
+    <div class="display-label">
+         <h3>8.0 @Html.DisplayNameFor(model => model.AccountPerformanceWithOtherBanks)</h3>
+        <h3>8.1 NUMBER OF MONTHS</h3>
+        <h3>PERIOD</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.AccountPerformanceWithOtherBanks)
+    </div>
+
+    <div class="display-label">
+         <h3>9.0 @Html.DisplayNameFor(model => model.ProportionalAnalysisOfCompanyTurnover)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.ProportionalAnalysisOfCompanyTurnover)
+    </div>
+
+    <div class="display-label">
+       <h3>10.0 @Html.DisplayNameFor(model => model.TotalBorrowingFromWemaAndOtherBanks)</h3>
+        <h3>10.1 Existing Facilities (Direct Borrowing from Wema Bank Plc)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.TotalBorrowingFromWemaAndOtherBanks)
+    </div>
+
+    
+    <div class="display-label">
+        <h3>10.2 @Html.DisplayNameFor(model => model.RelatedFacilities)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.RelatedFacilities)
+    </div>
+
+    
+    <div class="display-label">
+        <h3>10.3 @Html.DisplayNameFor(model => model.ExistingBorrowingFromOtherBanks)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.ExistingBorrowingFromOtherBanks)
+    </div>
+
+    
+    <div class="display-label">
+      <h3>11.0 @Html.DisplayNameFor(model => model.CreditCheckOnCRMS)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.CreditCheckOnCRMS)
+    </div>
+
+    
+    <div class="display-label">
+      <h3> @Html.DisplayNameFor(model => model.FinancialReview)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.FinancialReview)
+    </div>
+
+    <br /><br /><br/><br />
+    
+    <div class="display-label">
+       <h3> @Html.DisplayNameFor(model => model.CapitalAdequacy)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.CapitalAdequacy)
+    </div>
+
+    
+    <br /><br /><br/><br />
+    <div class="display-label">
+       <h3>13.0  @Html.DisplayNameFor(model => model.TransactionDynamics)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.TransactionDynamics)
+    </div>
+
+    <h3>14.0 FACILITY CONDITIONS</h3>
+    <div class="display-label">
+        <h3>14.1 @Html.DisplayNameFor(model => model.ConditionsPrecedentToDrawdown)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.ConditionsPrecedentToDrawdown)
+    </div>
+
+    <div class="display-label">
+        <h3>14.2 @Html.DisplayNameFor(model => model.ConditionsAfterDrawdown)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.ConditionsAfterDrawdown)
+    </div>
+
+  
+    <div class="display-label">
+       <h3>15.0 @Html.DisplayNameFor(model => model.RiskControlMeasures)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.RiskControlMeasures)
+    </div>
+
+    
+    <div class="display-label">
+       <h3>16.0 @Html.DisplayNameFor(model => model.KeyRisksAndMitigatingMeasures)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.KeyRisksAndMitigatingMeasures)
+    </div>
+
+   
+    <div class="display-label">
+      <h3>17.0 @Html.DisplayNameFor(model => model.JustificationForTheCredit)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.JustificationForTheCredit)
+    </div>
+
+    <div class="display-label">
+       <h3>18.0 @Html.DisplayNameFor(model => model.Security)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.Security)
+    </div>
+
+   
+    <div class="display-label">
+       <h3> @Html.DisplayNameFor(model => model.Guarantee)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.Guarantee)
+    </div>
+
+    
+    <div class="display-label">
+      <h3>19.0 @Html.DisplayNameFor(model => model.CreditRiskRating)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.CreditRiskRating)
+    </div>
+
+   
+    <div class="display-label">
+     <h3>20.0 @Html.DisplayNameFor(model => model.RegionalExecutiveComments)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.RegionalExecutiveComments)
+    </div>
+
+    <div class="display-label">
+       <h3>21.0  @Html.DisplayNameFor(model => model.CreditQualityAssuranceReview) </h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.CreditQualityAssuranceReview)
+    </div>
+
+    
+    <div class="display-label">
+        <h3>22.0   @Html.DisplayNameFor(model => model.Recommendation) </h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.Recommendation)
+    </div>
+
+     <div class="display-label">
+     <h3>24.0 @Html.DisplayNameFor(model => model.TotalFacilityAmount) </h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.TotalFacilityAmount)
+    </div>
+
+   
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CAMId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

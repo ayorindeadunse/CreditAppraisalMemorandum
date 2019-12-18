@@ -1,0 +1,291 @@
+﻿@model IEnumerable<Wema_CAM.Models.CAM>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicantID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BranchProcessedFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZoneProcessedFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegionProcessedFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ownership)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BoardAndManagement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProfileOfBoardAndManagement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HistoryAndScopeOfOperation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BorrowingPowerOfDirectors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IndustryAnalysis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BackgroundToTheRequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountPerformanceWithWemaBank)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HighlightsOfOtherPerformanceIndicators)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SwingAnalysisForLastSixMonths)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentsOnAccountPerformance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountPerformanceWithOtherBanks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProportionalAnalysisOfCompanyTurnover)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalBorrowingFromWemaAndOtherBanks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelatedFacilities)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExistingBorrowingFromOtherBanks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditCheckOnCRMS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinancialReview)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CapitalAdequacy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDynamics)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConditionsPrecedentToDrawdown)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConditionsAfterDrawdown)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RiskControlMeasures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KeyRisksAndMitigatingMeasures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JustificationForTheCredit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Security)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Guarantee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditRiskRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegionalExecutiveComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditQualityAssuranceReview)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Recommendation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalFacilityAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InitiatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DestinationUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateLastUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateUserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicantID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchProcessedFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZoneProcessedFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegionProcessedFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ownership)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BoardAndManagement)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProfileOfBoardAndManagement)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HistoryAndScopeOfOperation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BorrowingPowerOfDirectors)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IndustryAnalysis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BackgroundToTheRequest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountPerformanceWithWemaBank)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HighlightsOfOtherPerformanceIndicators)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Balance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SwingAnalysisForLastSixMonths)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentsOnAccountPerformance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountPerformanceWithOtherBanks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProportionalAnalysisOfCompanyTurnover)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalBorrowingFromWemaAndOtherBanks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelatedFacilities)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExistingBorrowingFromOtherBanks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreditCheckOnCRMS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FinancialReview)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CapitalAdequacy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionDynamics)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConditionsPrecedentToDrawdown)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConditionsAfterDrawdown)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskControlMeasures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KeyRisksAndMitigatingMeasures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JustificationForTheCredit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Security)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Guarantee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreditRiskRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegionalExecutiveComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreditQualityAssuranceReview)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recommendation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalFacilityAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InitiatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DestinationUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateLastUpdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateUserId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CAMId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CAMId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CAMId })
+        </td>
+    </tr>
+}
+
+</table>

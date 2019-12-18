@@ -1,0 +1,50 @@
+﻿@model Wema_CAM.Models.Comment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Comment</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CAMId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CAMId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Comment1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Comment1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CommentDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CommentDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EditDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EditDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

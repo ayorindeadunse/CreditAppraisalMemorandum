@@ -1,0 +1,279 @@
+﻿@*@model IEnumerable<Wema_CAM.Models.CAM>*@
+@model PagedList.IPagedList<Wema_CAM.PendingCamList>
+@using PagedList.Mvc; 
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.min.js")" type="text/javascript"></script>
+
+<style>
+     .tblboda {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+    padding: 5px;  
+    
+      /*padding-right: 0px;  
+      padding-bottom: 0.25in;  
+      padding-left: 5em;*/  
+      max-width:1500px;
+    }
+
+    .tblboda1 {
+        border-width: 3px;
+        border-style: solid;
+        border-color: #000000;
+        padding: 5px;
+        max-width: 1500px;
+        /*padding-right: 0px;  
+      padding-bottom: 0.25in;  
+      padding-left: 5em;*/
+    }
+   
+</style>
+
+ <form action='@Url.Action("Index","CRACAMViewer")' method="post" >
+
+      <br />
+      <br />
+      <h3>Search For Customer</h3> <input type="text" name="customersearch" id="customersearch"/>
+    
+      <input type="submit" id="searchexistingcams" value="Search" />
+
+<h2>CREDIT APPRAISAL MEMORANDUM LIST FOR @Session["Username"].ToString() </h2>
+@if(ViewBag.Message !=null)
+    {
+        <h3>Viewbag.Message</h3>
+    }
+@*<p>
+    @Html.ActionLink("Create New Credit Appraisal Memorandum", "Create")
+</p>*@
+
+<table>
+    <tr>
+        <th>
+            CAM Id
+        </th>
+        
+        <th>
+           Initiated By
+        </th>       
+        <th>
+            Current Location
+        </th> 
+        <th>
+            Customer Name
+        </th>
+       @* <th>
+            Date Initiated
+        </th> *@
+        <th>
+            Facility Type
+        </th>
+         <th>
+            Facility Amount
+        </th>
+       @* <th>
+            Time Elapsed
+        </th>*@
+        @*<th>
+            Date Last Updated
+        </th>
+        <th>
+            Time Elapsed
+        </th>
+       *@
+           <th>
+            Status
+        </th>      
+              
+    </tr>
+        @foreach (Wema_CAM.PendingCamList c in ViewBag.CAM) {
+    <tr>
+        <td>
+            @c.camid
+        </td>
+        <td>
+            @c.initiatedby
+        </td>
+        <td>
+            @c.destinationuser
+        </td>
+        <td>
+            @c.customername
+        </td>
+
+       @* <td>
+            @c.dateinitiated
+        </td>*@
+        <td>
+            @c.facilitytype
+        </td>
+         <td>
+          @c.facilityamount
+        </td>
+        @*<td>@{
+            ;
+            //DateTime today = DateTime.Now;
+            TimeSpan ts = DateTime.Now.Subtract(c.dateinitiated);
+
+            //Get the number of seconds elapsed
+            //decimal secondselapsed = decimal.Parse(ts.TotalSeconds.ToString());
+              //@(ts.TotalDays.ToString())
+            string output = string.Format("{0:D2} hrs, {1:D2} mins, {2:D2} secs", ts.Hours, ts.Minutes, ts.Seconds);
+            @output 
+        }
+            </td>*@
+        @* <td>
+            @c.datelastupdated
+        </td>
+        <td>@{
+            ;
+            //DateTime today = DateTime.Now;
+            TimeSpan ts1 = DateTime.Now.Subtract(c.datelastupdated);
+
+            //Get the number of seconds elapsed
+            //decimal secondselapsed = decimal.Parse(ts.TotalSeconds.ToString());
+              //@(ts.TotalDays.ToString())
+            string output1 = string.Format("{0:D2} hrs, {1:D2} mins, {2:D2} secs", ts1.Hours, ts1.Minutes, ts1.Seconds);
+            @output1 
+        }
+            </td>*@
+       
+            @*decimal timeelapsedinseconds = secondselapsed / 1;
+            
+           
+      
+        @foreach (decimal secondselapsed in ViewBag.TotalSecondsCAMElapsed) {
+            if (secondselapsed > 1 && secondselapsed < 60)
+            {
+                decimal timeelapsedinseconds = secondselapsed/1;
+                <td>
+                    @Math.Round(timeelapsedinseconds,0) seconds pending
+                </td>
+        }
+        else if(secondselapsed > 60 && secondselapsed < 3600) {
+            decimal timeelapsedinminutes = secondselapsed/60;
+            <td>
+                @Math.Round(timeelapsedinminutes,0) minutes pending
+            </td>
+        }
+            else if(secondselapsed > 3600 && secondselapsed < 86400){
+                decimal timeelapsedinhours = secondselapsed/3600;
+                <td>
+                    @Math.Round(timeelapsedinhours,0) hours pending
+                </td>      
+        }
+        else if(secondselapsed > 86400 && secondselapsed < 604800){
+            decimal timeelapsedindays = secondselapsed/86400;
+            <td>
+                @Math.Round(timeelapsedindays,0) days pending
+            </td>
+        }
+        else if(secondselapsed > 604800 && secondselapsed < 31449600){
+            decimal timeelapsedinweeks = secondselapsed/604800;
+            <td>
+                @Math.Round(timeelapsedinweeks,0) weeks pending
+                </td>
+        }
+        else if(secondselapsed > 31449600){
+            decimal timeelapsedinyears = secondselapsed/31449600;
+            <td>
+                @Math.Round(timeelapsedinyears,0) years pending
+            </td>
+        }
+        *@<td>
+            @c.status     
+               </td>
+        
+
+       <td>        
+        @*   @Html.ActionLink("Details", "Details", "CAMDetails", new { Id = c.camid },"")*@
+            @Html.ActionLink("Details", "Details", new { id=c.camid })
+            @Html.ActionLink("Add Comment", "Edit", new { id=c.camid })
+           
+        </td> 
+     
+    </tr>
+}
+</table>
+   
+
+
+ @Html.PagedListPager( Model, page => Url.Action("Index", new { page }) )
+<br />
+<br />
+<br />
+<br />
+ </form>
+<h3>Search for Transactions</h3>
+  @*    @Html.DropDownList("Status", (SelectList)ViewBag.Status, "")*@
+<select id="status1"> 
+  <option value="Pending">Pending</option>
+    <option value="Approved">Approved</option>
+  <option value="Declined">Declined</option>
+</select>
+Start Date:<input type="text" id="startdate2" />
+End Date:<input type="text" id="enddate2" />
+<div id="dialog-message" title="Message">
+    <table>
+
+    </table>
+</div>
+
+<div id="camsforbranch">
+
+
+</div>
+<input type="button" id="selectotherstatus" value="Submit" />
+
+
+
+
+<script type ="text/javascript">
+    //Approve Button click
+    $(document).ready(function () {
+        if ($("#selectotherstatus").click(function (e) {
+               e.preventDefault();
+               $.ajax({
+            type: "POST",
+          //  url: "/WemaCAM/CAMViewer/retrievependinganddeclined",
+                url: "/CAMViewer/retrievependinganddeclined",
+            datatype: "html",
+            data: {
+            status1: $("#status1").val(),
+            startdate2: $("#startdate2").val(),
+            enddate2: $("#enddate2").val(),
+        },
+            success: function (data, textStatus, jqXHR) {
+
+            $("#dialog-message").text(data.Message);
+            $("#camsforbranch").html(data.Feedback);
+            $("#comment").val("");
+                       $("#dialog-message").dialog({
+            modal: true,
+            buttons: {
+            Ok: function () {
+                                   $(this).dialog("close");
+        }
+        }
+        });
+        }
+        });
+        }));
+    });
+
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $('#startdate2').datepicker();
+    });
+    $(function () {
+        $('#enddate2').datepicker();
+    });
+</script>

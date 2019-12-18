@@ -1,0 +1,475 @@
+﻿@model Wema_CAM.Models.CAM
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<script src="@Url.Content("~/Scripts/jquery-1.8.2.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jHtmlArea-0.7.5.js")" type="text/javascript"></script>
+<link rel="Stylesheet" type="text/css" href="~/Content/jHtmlArea/jHtmlArea.css" />
+<script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.min.js")" type="text/javascript"></script>
+
+
+<style>
+     .tblboda {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+    padding: 5px;  
+    
+      /*padding-right: 0px;  
+      padding-bottom: 0.25in;  
+      padding-left: 5em;*/  
+      max-width:1500px;
+    }
+
+    .tblboda1 {
+        border-width: 3px;
+        border-style: solid;
+        border-color: #000000;
+        padding: 5px;
+        max-width: 1500px;
+        /*padding-right: 0px;  
+      padding-bottom: 0.25in;  
+      padding-left: 5em;*/
+    }
+   
+</style>
+<style>
+div.jHtmlArea .ToolBar ul li a.custom_disk_button 
+{
+    background: url(images/disk.png) no-repeat;
+    background-position: 0 0;
+}
+</style>
+
+<h2><u>Include Credit Analyst's Comments</u></h2>
+<br />
+<br />
+<br />
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>CAM</legend>
+        
+        <div class="tblboda">
+
+        @Html.HiddenFor(model => model.CAMId)
+              @Html.HiddenFor(model => model.ApplicantID)
+            @Html.HiddenFor(model=> model.BranchProcessedFrom)
+             @Html.HiddenFor(model=> model.ZoneProcessedFrom)
+             @Html.HiddenFor(model=> model.RegionProcessedFrom)
+             @Html.HiddenFor(model=> model.Ownership)
+             @Html.HiddenFor(model=> model.BoardAndManagement)
+             @Html.HiddenFor(model=> model.ProfileOfBoardAndManagement)
+             @Html.HiddenFor(model=> model.HistoryAndScopeOfOperation)
+             @Html.HiddenFor(model=> model.BorrowingPowerOfDirectors)
+             @Html.HiddenFor(model=> model.IndustryAnalysis)
+             @Html.HiddenFor(model=> model.BackgroundToTheRequest)
+             @Html.HiddenFor(model=> model.TransactionDetails)
+             @Html.HiddenFor(model=> model.AccountPerformanceWithWemaBank)
+             @Html.HiddenFor(model=> model.HighlightsOfOtherPerformanceIndicators)
+             @Html.HiddenFor(model=> model.Balance)
+             @Html.HiddenFor(model=> model.SwingAnalysisForLastSixMonths)
+             @Html.HiddenFor(model=> model.CommentsOnAccountPerformance)
+             @Html.HiddenFor(model=> model.AccountPerformanceWithOtherBanks)
+             @Html.HiddenFor(model=> model.ProportionalAnalysisOfCompanyTurnover)
+             @Html.HiddenFor(model=> model.TotalBorrowingFromWemaAndOtherBanks)
+             @Html.HiddenFor(model=> model.RelatedFacilities)
+             @Html.HiddenFor(model=> model.ExistingBorrowingFromOtherBanks)
+             @Html.HiddenFor(model=> model.CreditCheckOnCRMS)
+             @Html.HiddenFor(model=> model.FinancialReview)
+             @Html.HiddenFor(model=> model.CapitalAdequacy)
+             @Html.HiddenFor(model=> model.TransactionDynamics)
+             @Html.HiddenFor(model=> model.ConditionsPrecedentToDrawdown)
+             @Html.HiddenFor(model=> model.ConditionsAfterDrawdown)
+             @Html.HiddenFor(model=> model.RiskControlMeasures)
+             @Html.HiddenFor(model=> model.KeyRisksAndMitigatingMeasures)
+             @Html.HiddenFor(model=> model.JustificationForTheCredit)
+             @Html.HiddenFor(model=> model.Security)
+             @Html.HiddenFor(model=> model.Guarantee)
+             @Html.HiddenFor(model=> model.CreditRiskRating)
+             @Html.HiddenFor(model=> model.RegionalExecutiveComments)
+             @Html.HiddenFor(model=> model.Recommendation)
+             @Html.HiddenFor(model=> model.TotalFacilityAmount)
+            @Html.HiddenFor(model => model.InitiatedBy)
+    @*    <div class="editor-label">
+            @Html.LabelFor(model => model.ApplicantID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ApplicantID)
+            @Html.ValidationMessageFor(model => model.ApplicantID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BranchProcessedFrom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BranchProcessedFrom)
+            @Html.ValidationMessageFor(model => model.BranchProcessedFrom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ZoneProcessedFrom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ZoneProcessedFrom)
+            @Html.ValidationMessageFor(model => model.ZoneProcessedFrom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RegionProcessedFrom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RegionProcessedFrom)
+            @Html.ValidationMessageFor(model => model.RegionProcessedFrom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Ownership)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Ownership)
+            @Html.ValidationMessageFor(model => model.Ownership)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BoardAndManagement)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BoardAndManagement)
+            @Html.ValidationMessageFor(model => model.BoardAndManagement)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProfileOfBoardAndManagement)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProfileOfBoardAndManagement)
+            @Html.ValidationMessageFor(model => model.ProfileOfBoardAndManagement)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HistoryAndScopeOfOperation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HistoryAndScopeOfOperation)
+            @Html.ValidationMessageFor(model => model.HistoryAndScopeOfOperation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BorrowingPowerOfDirectors)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BorrowingPowerOfDirectors)
+            @Html.ValidationMessageFor(model => model.BorrowingPowerOfDirectors)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IndustryAnalysis)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IndustryAnalysis)
+            @Html.ValidationMessageFor(model => model.IndustryAnalysis)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BackgroundToTheRequest)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BackgroundToTheRequest)
+            @Html.ValidationMessageFor(model => model.BackgroundToTheRequest)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TransactionDetails)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TransactionDetails)
+            @Html.ValidationMessageFor(model => model.TransactionDetails)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AccountPerformanceWithWemaBank)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AccountPerformanceWithWemaBank)
+            @Html.ValidationMessageFor(model => model.AccountPerformanceWithWemaBank)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HighlightsOfOtherPerformanceIndicators)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HighlightsOfOtherPerformanceIndicators)
+            @Html.ValidationMessageFor(model => model.HighlightsOfOtherPerformanceIndicators)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Balance)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Balance)
+            @Html.ValidationMessageFor(model => model.Balance)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SwingAnalysisForLastSixMonths)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SwingAnalysisForLastSixMonths)
+            @Html.ValidationMessageFor(model => model.SwingAnalysisForLastSixMonths)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CommentsOnAccountPerformance)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CommentsOnAccountPerformance)
+            @Html.ValidationMessageFor(model => model.CommentsOnAccountPerformance)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AccountPerformanceWithOtherBanks)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AccountPerformanceWithOtherBanks)
+            @Html.ValidationMessageFor(model => model.AccountPerformanceWithOtherBanks)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProportionalAnalysisOfCompanyTurnover)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProportionalAnalysisOfCompanyTurnover)
+            @Html.ValidationMessageFor(model => model.ProportionalAnalysisOfCompanyTurnover)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TotalBorrowingFromWemaAndOtherBanks)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TotalBorrowingFromWemaAndOtherBanks)
+            @Html.ValidationMessageFor(model => model.TotalBorrowingFromWemaAndOtherBanks)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RelatedFacilities)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RelatedFacilities)
+            @Html.ValidationMessageFor(model => model.RelatedFacilities)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExistingBorrowingFromOtherBanks)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ExistingBorrowingFromOtherBanks)
+            @Html.ValidationMessageFor(model => model.ExistingBorrowingFromOtherBanks)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreditCheckOnCRMS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreditCheckOnCRMS)
+            @Html.ValidationMessageFor(model => model.CreditCheckOnCRMS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FinancialReview)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FinancialReview)
+            @Html.ValidationMessageFor(model => model.FinancialReview)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CapitalAdequacy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CapitalAdequacy)
+            @Html.ValidationMessageFor(model => model.CapitalAdequacy)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TransactionDynamics)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TransactionDynamics)
+            @Html.ValidationMessageFor(model => model.TransactionDynamics)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ConditionsPrecedentToDrawdown)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ConditionsPrecedentToDrawdown)
+            @Html.ValidationMessageFor(model => model.ConditionsPrecedentToDrawdown)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ConditionsAfterDrawdown)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ConditionsAfterDrawdown)
+            @Html.ValidationMessageFor(model => model.ConditionsAfterDrawdown)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RiskControlMeasures)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RiskControlMeasures)
+            @Html.ValidationMessageFor(model => model.RiskControlMeasures)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KeyRisksAndMitigatingMeasures)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KeyRisksAndMitigatingMeasures)
+            @Html.ValidationMessageFor(model => model.KeyRisksAndMitigatingMeasures)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.JustificationForTheCredit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.JustificationForTheCredit)
+            @Html.ValidationMessageFor(model => model.JustificationForTheCredit)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Security)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Security)
+            @Html.ValidationMessageFor(model => model.Security)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Guarantee)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Guarantee)
+            @Html.ValidationMessageFor(model => model.Guarantee)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreditRiskRating)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreditRiskRating)
+            @Html.ValidationMessageFor(model => model.CreditRiskRating)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RegionalExecutiveComments)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RegionalExecutiveComments)
+            @Html.ValidationMessageFor(model => model.RegionalExecutiveComments)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreditQualityAssuranceReview)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.CreditQualityAssuranceReview, new {@class = "foo" })
+            @Html.ValidationMessageFor(model => model.CreditQualityAssuranceReview)
+        </div>
+
+       @* <div class="editor-label">
+            @Html.LabelFor(model => model.Recommendation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Recommendation)
+            @Html.ValidationMessageFor(model => model.Recommendation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TotalFacilityAmount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TotalFacilityAmount)
+            @Html.ValidationMessageFor(model => model.TotalFacilityAmount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Status)
+            @Html.ValidationMessageFor(model => model.Status)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.InitiatedBy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.InitiatedBy)
+            @Html.ValidationMessageFor(model => model.InitiatedBy)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DestinationUserId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DestinationUserId)
+            @Html.ValidationMessageFor(model => model.DestinationUserId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreationDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreationDate)
+            @Html.ValidationMessageFor(model => model.CreationDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateLastUpdated)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateLastUpdated)
+            @Html.ValidationMessageFor(model => model.DateLastUpdated)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UpdateUserId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UpdateUserId)
+            @Html.ValidationMessageFor(model => model.UpdateUserId)
+        </div>*@
+        <p>
+            <input type="submit" value="Submit" onclick="return confirm('Are you sure?')" />
+        </p>
+    </fieldset>
+}
+
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $(".foo").htmlarea();
+
+        // $('.text-box').jqte();
+        //$('#t').jqteVal;
+        //  $('#t').jqteVal();
+
+
+    });
+    </script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

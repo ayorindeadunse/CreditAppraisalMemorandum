@@ -1,0 +1,50 @@
+﻿@model Wema_CAM.Models.Region
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Region</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RegionName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RegionName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RegiondId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RegiondId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreationDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreationDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateLastUpdated)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateLastUpdated)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UpdateUserId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UpdateUserId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

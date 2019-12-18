@@ -1,0 +1,933 @@
+﻿@model Wema_CAM.Models.CAM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.min.js")" type="text/javascript"></script>
+
+
+<style>
+    .tblboda {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+    padding: 5px;  
+      /*padding-right: 0px;  
+      padding-bottom: 0.25in;  
+      padding-left: 5em;*/  
+      max-width:1800px;
+    }
+
+    .tblboda1 {
+         border-width: 3px;
+    border-style: solid;
+    border-color: #000000;
+    padding: 5px;  
+    max-width:1800px;
+      /*padding-right: 0px;  
+      padding-bottom: 0.25in;  
+      padding-left: 5em;*/  
+    }
+    
+   
+</style>
+<p>
+@if (Session["UserFunction"].ToString() == "RM")
+        
+    {
+
+        @Html.ActionLink("Back to list", "Index", "Applicant");
+    } 
+    else
+    {
+    
+    @*@Html.ActionLink("Edit", "Edit", new { id=Model.CAMId }) |*@
+    
+
+    }
+    </p>
+ @*<form action='@Url.Action("DetailsPDF","CAMDetails")' method="post" >*@
+     <input type="submit" name="exporttopdf" id="exporttopdf" value="Export to Word" />
+
+<div id="maincontent" class="tblboda1">
+<h2>CREDIT APPRAISAL MEMORANDUM DETAILS</h2>
+<p>
+
+   
+    </p>
+<h3>APPROVED BY @*@Html.DisplayNameFor(model => model.DestinationUserId)*@</h3>
+            <div class ="display-field">
+               @Html.Raw(Model.DestinationUserId)
+            </div>
+<br />
+<br />
+<br />
+<fieldset>
+    @*<legend>CAM</legend>*@
+
+    @if (ViewBag.MainBranch!=null)
+    {
+        <h3>Branch: @ViewBag.MainBranch</h3>
+    }
+     <div id="pdfcontents1" class="tblboda">
+      <div id="pdfcontents" class="tblboda">
+            <h3><u>Applicant's Brief</u></h3>
+          <table>
+              
+              
+              <tr>
+                  <td>
+                <b>  ApplicantType</b>
+                      </td>
+                   @foreach (Wema_CAM.appbrief ab in ViewBag.ApplicantsBriefInfo)
+                   {
+                  <td>
+                      @ab.apptype
+                  </td>
+                   }
+              </tr>
+              <tr>
+                  <td>
+                     <b>Legal Identity Name</b> 
+                  </td>
+                   @foreach (Wema_CAM.appbrief b in ViewBag.ApplicantsBriefInfo)
+                   {
+                  <td>
+                      @b.legalidentityname
+                  </td>
+                   }
+              </tr>
+              <tr>
+                  <td>
+                      <b>Year Of Incorporation</b>
+                  </td>
+                   @foreach (Wema_CAM.appbrief c in ViewBag.ApplicantsBriefInfo)
+                   {
+                  <td>
+                      @c.yearofincorporation
+                  </td>
+                   }
+              </tr>
+              <tr>
+                  <td>
+                     <b>RC Number</b> 
+                  </td>
+                   @foreach (Wema_CAM.appbrief d in ViewBag.ApplicantsBriefInfo)
+                   {
+                  <td>
+                      @d.rcnumber
+                  </td>
+                   }
+              </tr>
+              <tr>
+                  <td>
+                      <b>Business Address</b>
+                  </td>
+                   @foreach (Wema_CAM.appbrief e in ViewBag.ApplicantsBriefInfo)
+                   {
+                  <td>
+                      @e.businessaddress
+                  </td>
+                   }
+              </tr>
+              <tr>
+                  <td>
+                    <b>Names Of Auditors</b>  
+                  </td>
+                   @foreach (Wema_CAM.appbrief f in ViewBag.ApplicantsBriefInfo)
+                   {
+                  <td>
+                      @f.nameofauditors
+                  </td>
+                   }
+              </tr>
+              <tr>
+                  <td>
+                    <b>Nature Of Business</b>  
+                  </td>
+                   @foreach (Wema_CAM.appbrief g in ViewBag.ApplicantsBriefInfo)
+                   {
+                  <td>
+                      @g.natureofbusiness
+                  </td>
+                   }
+              </tr>
+              <tr>
+                  <td>
+                     <b>Industry</b> 
+                  </td>
+                   @foreach (Wema_CAM.appbrief h in ViewBag.ApplicantsBriefInfo)
+                   {
+                  <td>
+                      @h.industry
+                  </td>
+                   }
+              </tr>
+              <tr>
+                  <td>
+                      <b>Product Range</b>
+                  </td>
+                   @foreach (Wema_CAM.appbrief i in ViewBag.ApplicantsBriefInfo)
+                   {
+                 <td>
+                     @i.productrange
+                 </td>
+                   }
+              </tr>
+              <tr>
+                  <td>
+                     <b>Major Clients</b> 
+                  </td>
+                   @foreach (Wema_CAM.appbrief j in ViewBag.ApplicantsBriefInfo)
+                   {
+                  <td>
+                      @j.majorclients
+                  </td>
+                   }
+              </tr>
+              
+          </table>
+          
+               
+            </div>
+        <br />
+       
+        <div class="tblboda">
+            <h3><u>Credit Request Summary</u></h3>
+            <table>
+               
+                    <tr>
+                        <td>
+                       <b> CAM Id</b>
+                            </td>
+                         @foreach(Wema_CAM.creditrequest p in ViewBag.CreditRequestInfo) {
+                        <td>
+                             @p.camid
+                        </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                       <b>Facility Type</b> 
+                            </td>
+                         @foreach(Wema_CAM.creditrequest cr in ViewBag.CreditRequestInfo) {
+                        <td>
+                            @cr.facilitytype
+                        </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                       <b>Facility Amount</b>
+                            </td>
+                         @foreach(Wema_CAM.creditrequest c in ViewBag.CreditRequestInfo) {
+                        <td>
+                             @c.facilityamount
+                        </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                        <b>Applicant Type</b>
+                            </td>
+                         @foreach(Wema_CAM.creditrequest d in ViewBag.CreditRequestInfo) {
+                        <td>
+                            @d.applicanttype
+                        </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                           <b>Purpose</b> 
+                        </td>
+                         @foreach(Wema_CAM.creditrequest e in ViewBag.CreditRequestInfo) {
+                        <td>
+                            @e.purpose
+                        </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Tenor</b>
+                        </td>
+                         @foreach(Wema_CAM.creditrequest f in ViewBag.CreditRequestInfo) {
+                        <td>
+                              @f.tenor
+                        </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                             <b>Interest Rate</b>
+                        </td>
+                         @foreach(Wema_CAM.creditrequest g in ViewBag.CreditRequestInfo) {
+                       <td>
+                            @g.interestrate
+                       </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                             <b>Commitment Fee</b>
+                        </td>
+                         @foreach(Wema_CAM.creditrequest h in ViewBag.CreditRequestInfo) {
+                        <td>
+                             @h.processingfee
+                        </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Management Fee</b>  
+                        </td>
+                         @foreach(Wema_CAM.creditrequest i in ViewBag.CreditRequestInfo) {
+                      <td>
+                           @i.managementfee
+                      </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                             <b>LC Commission</b>
+                        </td>
+                         @foreach(Wema_CAM.creditrequest j in ViewBag.CreditRequestInfo) {
+                       <td>
+                           @j.lccommission
+                       </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                           <b>Other Charges</b> 
+                        </td>
+                         @foreach(Wema_CAM.creditrequest k in ViewBag.CreditRequestInfo) {
+                        <td>
+                             @k.othercharges
+                        </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                             <b>COT Rate</b>
+                        </td>
+                         @foreach(Wema_CAM.creditrequest l in ViewBag.CreditRequestInfo) {
+                       <td>
+                              @l.cotrate
+                       </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                             <b>Source Of Repayment</b>
+                        </td>
+                         @foreach(Wema_CAM.creditrequest m in ViewBag.CreditRequestInfo) {
+                       <td>
+                            @m.sourceofrepayment
+                       </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                              <b>Mode of Repayment</b>
+                        </td>
+                         @foreach(Wema_CAM.creditrequest n in ViewBag.CreditRequestInfo) {
+                     <td>
+                           @n.modeofrepayment
+                     </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Security</b>
+                        </td>
+                         @foreach(Wema_CAM.creditrequest o in ViewBag.CreditRequestInfo) {
+                        <td>
+                             @o.security
+                        </td>
+                         }
+                    </tr>
+                    <tr>
+                        <td>
+                               <b>Guarantee(s)</b>
+                        </td>
+                         @foreach(Wema_CAM.creditrequest p in ViewBag.CreditRequestInfo) {
+                     <td>
+                         @p.guarantee
+                     </td>
+                         }
+                    </tr>
+
+                
+                
+            </table>
+        </div>
+        <br />
+        
+
+    @Html.HiddenFor(model => model.ApplicantID)
+     @Html.HiddenFor(model => model.CAMId)
+    @* <div class="display-label">
+        <h3> @Html.DisplayNameFor(model => model.CreationDate)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.CreationDate)
+    </div>
+
+    <div class="display-label">
+       <h3> @Html.DisplayNameFor(model => model.DateLastUpdated)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.DateLastUpdated)
+    </div>
+
+    <div class="display-label">
+       <h3> @Html.DisplayNameFor(model => model.UpdateUserId)</h3>
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.UpdateUserId)
+    </div>
+    *@
+     <div class="tblboda1">
+        
+    
+    <h3>OTHER FORM DETAILS</h3>
+    <br />
+    <br />
+
+   
+    
+    <table>
+       
+        <tr>
+             <td>
+                   <h3>3.0 DIRECTORS AND SHAREHOLDERS’ DETAILS</h3>
+                  <div class="display-label">
+                   <h3>3.1 @Html.DisplayNameFor(model => model.Ownership)</h3>
+                  </div>
+                    <div class="display-field">
+                     @Html.Raw(Model.Ownership)
+                 </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                        <h3>3.2 @Html.DisplayNameFor(model => model.BoardAndManagement)</h3>
+                         </div>
+                         <div class="display-field">
+                         @Html.Raw(Model.BoardAndManagement)
+                        </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                        <h3>3.3 @Html.DisplayNameFor(model => model.ProfileOfBoardAndManagement)</h3>
+                         </div>
+                       <div class="display-field">
+                     @Html.Raw(Model.ProfileOfBoardAndManagement)
+                    </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                            <h3>4.0 OBLIGOR’S BUSINESS BACKGROUND AND SCOPE OF OPERATION</h3>
+                             <div class="display-label">
+                             <h3>4.2 @Html.DisplayNameFor(model => model.HistoryAndScopeOfOperation)</h3>
+                            </div>
+                             <div class="display-field">
+                            @Html.Raw(Model.HistoryAndScopeOfOperation)
+                             </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                        <h3>4.3 @Html.DisplayNameFor(model => model.BorrowingPowerOfDirectors)</h3>
+                     </div>
+                     <div class="display-field">
+                        @Html.Raw(Model.BorrowingPowerOfDirectors)
+                      </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                        <h3>5.0 @Html.DisplayNameFor(model => model.IndustryAnalysis)</h3>
+                        </div>
+                      <div class="display-field">
+                       @Html.Raw(Model.IndustryAnalysis)
+                     </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                        <h3>6.0 THE REQUEST</h3>
+                        <div class="display-label">
+                         <h3>6.1 @Html.DisplayNameFor(model => model.BackgroundToTheRequest)</h3>
+                        </div>
+                         <div class="display-field">
+                         @Html.Raw(Model.BackgroundToTheRequest)
+                        </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                      <h3>6.2 @Html.DisplayNameFor(model => model.TransactionDetails)</h3>
+                    </div>
+                     <div class="display-field">
+                       @Html.Raw(Model.TransactionDetails)
+                     </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                        <h3>7.0 @Html.DisplayNameFor(model => model.AccountPerformanceWithWemaBank)</h3>
+                         <h3>7.1 LENGTH OF RELATIONSHIP</h3>
+                         <H3>7.2 ACCOUNT TURNOVER AND EARNINGS FOR THE LAST 5 MONTHS</H3>
+                        </div>
+                         <div class="display-field">
+                        @Html.Raw(Model.AccountPerformanceWithWemaBank)
+                        </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                         <h3>7.3 @Html.DisplayNameFor(model => model.HighlightsOfOtherPerformanceIndicators)</h3>
+                         </div>
+                          <div class="display-field">
+                          @Html.Raw(Model.HighlightsOfOtherPerformanceIndicators)
+                          </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                        <div class="display-label">
+                         <h3>7.4 @Html.DisplayNameFor(model => model.Balance)</h3>
+                         </div>
+                         <div class="display-field">
+                        @Html.Raw(Model.Balance)
+                        </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                        <h3>7.6 @Html.DisplayNameFor(model => model.SwingAnalysisForLastSixMonths)</h3>
+                        </div>
+                        <div class="display-field">
+                       @Html.Raw(Model.SwingAnalysisForLastSixMonths)
+                     </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                        <div class="display-label">
+                        <h3>7.7 @Html.DisplayNameFor(model => model.CommentsOnAccountPerformance)</h3>
+                        </div>
+                         <div class="display-field">
+                          @Html.Raw(Model.CommentsOnAccountPerformance)
+                           </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                        <h3>8.0 @Html.DisplayNameFor(model => model.AccountPerformanceWithOtherBanks)</h3>
+                         <h3>8.1 NUMBER OF MONTHS</h3>
+                         <h3>PERIOD</h3>
+                        </div>
+                      <div class="display-field">
+                       @Html.Raw(Model.AccountPerformanceWithOtherBanks)
+                     </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                        <div class="display-label">
+                     <h3>9.0 @Html.DisplayNameFor(model => model.ProportionalAnalysisOfCompanyTurnover)</h3>
+                     </div>
+                  <div class="display-field">
+                  @Html.Raw(Model.ProportionalAnalysisOfCompanyTurnover)
+                  </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                       <h3>10.0 @Html.DisplayNameFor(model => model.TotalBorrowingFromWemaAndOtherBanks)</h3>
+                       <h3>10.1 Existing Facilities (Direct Borrowing from Wema Bank Plc)</h3>
+                     </div>
+                     <div class="display-field">
+                        @Html.Raw(Model.TotalBorrowingFromWemaAndOtherBanks)
+                     </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                        <div class="display-label">
+                       <h3>10.2 @Html.DisplayNameFor(model => model.RelatedFacilities)</h3>
+                         </div>
+                         <div class="display-field">
+                        @Html.Raw(Model.RelatedFacilities)
+                        </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                        <h3>10.3 @Html.DisplayNameFor(model => model.ExistingBorrowingFromOtherBanks)</h3>
+                        </div>
+                          <div class="display-field">
+                        @Html.Raw(Model.ExistingBorrowingFromOtherBanks)
+                         </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                        <div class="display-label">
+                     <h3>11.0 @Html.DisplayNameFor(model => model.CreditCheckOnCRMS)</h3>
+                    </div>
+                     <div class="display-field">
+                      @Html.Raw(Model.CreditCheckOnCRMS)
+                      </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                     <h3> @Html.DisplayNameFor(model => model.FinancialReview)</h3>
+                     </div>
+                      <div class="display-field">
+                        @Html.Raw(Model.FinancialReview)
+                     </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                        <div class="display-label">
+                     <h3> @Html.DisplayNameFor(model => model.CapitalAdequacy)</h3>
+                    </div>
+                     <div class="display-field">
+                      @Html.Raw(Model.CapitalAdequacy)
+                    </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                      <h3>13.0  @Html.DisplayNameFor(model => model.TransactionDynamics)</h3>
+                     </div>
+                     <div class="display-field">
+                      @Html.Raw(Model.TransactionDynamics)
+                      </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                          <h3>14.0 FACILITY CONDITIONS</h3>
+                        <div class="display-label">
+                       <h3>14.1 @Html.DisplayNameFor(model => model.ConditionsPrecedentToDrawdown)</h3>
+                         </div>
+                     <div class="display-field">
+                        @Html.Raw(Model.ConditionsPrecedentToDrawdown)
+                     </div>
+
+            </td>
+        </tr>
+    
+        
+        <tr>
+             <td>
+                         <div class="display-label">
+                        <h3>14.2 @Html.DisplayNameFor(model => model.ConditionsAfterDrawdown)</h3>
+                        </div>
+                      <div class="display-field">
+                         @Html.Raw(Model.ConditionsAfterDrawdown)
+                         </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                         <h3>15.0 @Html.DisplayNameFor(model => model.RiskControlMeasures)</h3>
+                         </div>
+                          <div class="display-field">
+                           @Html.Raw(Model.RiskControlMeasures)
+                            </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                     <h3>16.0 @Html.DisplayNameFor(model => model.KeyRisksAndMitigatingMeasures)</h3>
+                    </div>
+                  <div class="display-field">
+                   @Html.Raw(Model.KeyRisksAndMitigatingMeasures)
+                     </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                         <h3>17.0 @Html.DisplayNameFor(model => model.JustificationForTheCredit)</h3>
+                         </div>
+                           <div class="display-field">
+                         @Html.Raw(Model.JustificationForTheCredit)
+                          </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                         <h3>18.0 @Html.DisplayNameFor(model => model.Security)</h3>
+                      </div>
+                      <div class="display-field">
+                     @Html.Raw(Model.Security)
+                      </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                        <div class="display-label">
+                     <h3> @Html.DisplayNameFor(model => model.Guarantee)</h3>
+                     </div>
+                      <div class="display-field">
+                        @Html.Raw(Model.Guarantee)
+                         </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                     <h3>19.0 @Html.DisplayNameFor(model => model.CreditRiskRating)</h3>
+                     </div>
+                      <div class="display-field">
+                        @Html.Raw(Model.CreditRiskRating)
+                        </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                     <h3>20.0 @Html.DisplayNameFor(model => model.RegionalExecutiveComments)</h3>
+                     </div>
+                     <div class="display-field">
+                        @Html.Raw(Model.RegionalExecutiveComments)
+                    </div>
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                   @if(Session["UserFunction"] == "CRA")
+        {
+                        <div class="display-label">
+                     <h3>21.0  @Html.DisplayNameFor(model => model.CreditQualityAssuranceReview) </h3>
+                     </div>
+                     <div class="display-field">
+                     @Html.Raw(Model.CreditQualityAssuranceReview)
+                     </div>
+                   }
+            </td>
+        </tr>
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                     <h3>22.0   @Html.DisplayNameFor(model => model.Recommendation) </h3>
+                    </div>
+                 <div class="display-field">
+                 @Html.Raw(Model.Recommendation)
+                 </div>
+            </td>
+        </tr>      
+
+        <tr>
+             <td>
+                         <div class="display-label">
+                         <h3>24.0 @Html.DisplayNameFor(model => model.TotalFacilityAmount) </h3>
+                        </div>
+                         @Html.HiddenFor(model => model.TotalFacilityAmount)
+                        <div class="display-field">
+                         @Html.Raw(Model.TotalFacilityAmount)
+                         </div>
+            </td>
+        </tr>
+         
+      
+            
+
+        <tr>
+             <td>
+                         @*@Retrieve Comments from the database*@
+                         <h4>25.0 COMMENTS</h4>
+                          <table class ="tblboda">
+                          <tr>
+                         <th>
+                        CAM Id
+                    </th>
+                    <th>
+                       Username
+                    </th>
+                    <th>
+                        Comment
+                    </th>
+                    <th>
+                        Comment Date
+                    </th>        
+              
+                        </tr>
+                            @foreach (Wema_CAM.Models.Comment c in ViewBag.Comment ) {
+                        <tr>
+                            <td>
+                                @c.CAMId
+                            </td>
+                            <td>
+                                @c.Username
+                            </td>
+                            <td>
+                                @c.Comment1
+                            </td>
+                            <td>
+                                @c.CommentDate
+                            </td>
+       
+                        </tr>
+}
+
+     
+                                 
+
+    </table>
+                 <br />
+                 <br />
+                 <br />
+                  @*@Retrieve Comments from the database*@
+                         <h4>26.0 ADDITIONAL COMMENTS</h4>
+                          <table class ="tblboda">
+                          <tr>
+                         <th>
+                        CAM Id
+                    </th>
+                    <th>
+                       Username
+                    </th>
+                    <th>
+                        Comment
+                    </th>
+                    <th>
+                        Comment Date
+                    </th>        
+              
+                        </tr>
+                            @foreach (Wema_CAM.Models.AdditionalComment c in ViewBag.Comment1 ) {
+                        <tr>
+                            <td>
+                                @c.CAMId
+                            </td>
+                            <td>
+                                @c.Username
+                            </td>
+                            <td>
+                                @c.Comment
+                            </td>
+                            <td>
+                                @c.CommentDate
+                            </td>
+       
+                        </tr>
+}
+
+     
+                                 
+
+    </table>
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+  @*<h3>Supporting Documents</h3>   
+                 <table class="tblboda">
+                     <tr>
+                         <th>
+                            File Name
+                         </th>
+                         <th>
+                             File Path
+                         </th>
+                     </tr>
+                     @foreach(Wema_CAM.Models.fileinformation f in ViewBag.SupportingDocuments) {
+                         <tr>
+                             <td>
+                                @f.filename
+                             </td>
+                             <td>
+                               @Html.ActionLink("View File","Download", new {id = f.fileid}) 
+                              
+                              
+
+                             </td>
+                         </tr>
+                     
+                     }
+                     
+     </table>*@
+                 
+        </div>
+ </div>
+      
+                     
+</fieldset>
+
+    </div>
+     @*</form>*@
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#exporttopdf").click(function (e) {
+            //window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('div[id$=reportList1]').html()));
+
+            window.open('data:application/vnd.ms-word,' + encodeURIComponent($('div[id=maincontent]').html()));
+
+            e.preventDefault();
+        });
+    });
+    </script>
+

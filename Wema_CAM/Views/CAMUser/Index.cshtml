@@ -1,0 +1,199 @@
+﻿@model IEnumerable<Wema_CAM.Models.CAM_User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jtable/jquery.jtable.js")" type="text/javascript"></script>
+
+<h2></h2>
+
+<div id="FormTemplate"></div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#FormTemplate').jtable({
+            title: 'CAMUser List',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            defaultSorting: 'Name ASC', //Set default sorting
+            actions: {
+                listAction: 'CAMUser/GetCAMUserList',
+                deleteAction: 'CAMUser/DeleteCAMUser',
+                updateAction: 'CAMUser/EditCAMUser',
+                createAction: 'CAMUser/AddCAMUser'
+            },
+            fields: {
+                id: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                Username: {
+                    title: 'User ID',
+                    width: '23%'
+                }
+                ,
+                EmailAddress: {
+                    title: 'E-mail Address',
+                    width: '23%'
+                }
+                ,
+                Role: {
+                    title: 'Role',
+                    width: '23%',
+                    options: [{ Value: 'Credit Risk', DisplayText: 'Credit Risk' }, { Value: 'User', DisplayText: 'User' }, { Value: 'Internal Control', DisplayText: 'Internal Control' }]
+                    //options: 'CAMUser/GetRoleList'
+                }
+                ,
+                ZoneId: {
+                    title: 'Zone',
+                    width: '23%',
+                    list: false,
+                    create: false,
+                    edit:false
+                },
+                BranchId: {
+                    title: 'Branch',
+                    width: '23%',
+                    options: 'CAMUser/GetBranchList'
+                },
+                RegionId: {
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                Grade:{
+                    //title: 'Grade',
+                    //width: '23%'
+                    title: 'Function(E.g RM, ZM, etc)',
+                    width: '23%',
+                    options: 'CAMUser/GetFunctionList'
+
+                },
+                Status:
+                    {
+                        title:'Status',
+                        width: '23%',
+                        options:'CAMUser/GetStatusList'
+                    },
+                CanApprove: {
+                    title: 'Can Approve?',
+                    width:'23%',
+                    type: 'checkbox',
+                    values: { 'false': 'Cannot Approve', 'true': 'Can Approve' },
+                    defaultValue: 'false'
+                },
+
+                CreationDate: {
+                    title: 'Date Created',
+                    width: '23%',
+                    create: false,
+                    edit: false,
+                    list:false
+                }
+                ,
+                DateLastUpdated: {
+                    title: 'Date Updated',
+                    width: '23%',
+                    create: false,
+                    edit: false,
+                    list: false
+                }
+                ,
+               
+                UpdateUserId: {
+                    title: 'Updated by',
+                    width: '23%',
+                    create: false,
+                    edit: false,
+                    list: false
+                }
+            }
+        });
+
+        //Load student list from server
+        $('#FormTemplate').jtable('load');
+    });
+ 
+</script>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CAMUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZoneId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegionId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateLastUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateUserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CAMUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZoneId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegionId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateLastUpdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateUserId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>*@

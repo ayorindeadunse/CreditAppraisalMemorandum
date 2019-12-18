@@ -1,0 +1,78 @@
+﻿@model Wema_CAM.Models.CAM_User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CAM_User</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Username)
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EmailAddress)
+    </div>
+    <div class="display-field">
+        @Html.Display(Model.EmailAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Role)
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.Role)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BranchId)
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.BranchId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ZoneId)
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.ZoneId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RegionId)
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.RegionId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreationDate)
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.CreationDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateLastUpdated)
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.DateLastUpdated)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UpdateUserId)
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.UpdateUserId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

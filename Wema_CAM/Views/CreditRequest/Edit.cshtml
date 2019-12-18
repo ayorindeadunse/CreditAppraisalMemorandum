@@ -1,0 +1,156 @@
+﻿@model Wema_CAM.Models.CreditRequestSummary
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>CreditRequestSummary</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FacilityID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FacilityID)
+            @Html.ValidationMessageFor(model => model.FacilityID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Facility)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Facility)
+            @Html.ValidationMessageFor(model => model.Facility)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FacilityAmount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FacilityAmount)
+            @Html.ValidationMessageFor(model => model.FacilityAmount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ApplicantType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ApplicantType)
+            @Html.ValidationMessageFor(model => model.ApplicantType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Purpose)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Purpose)
+            @Html.ValidationMessageFor(model => model.Purpose)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Tenor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Tenor)
+            @Html.ValidationMessageFor(model => model.Tenor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.InterestRate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.InterestRate)
+            @Html.ValidationMessageFor(model => model.InterestRate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProcessingFee)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProcessingFee)
+            @Html.ValidationMessageFor(model => model.ProcessingFee)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ManagementFee)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ManagementFee)
+            @Html.ValidationMessageFor(model => model.ManagementFee)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LCCommission)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LCCommission)
+            @Html.ValidationMessageFor(model => model.LCCommission)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OtherCharges)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OtherCharges)
+            @Html.ValidationMessageFor(model => model.OtherCharges)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COTRate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COTRate)
+            @Html.ValidationMessageFor(model => model.COTRate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SourceOfRepayment)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SourceOfRepayment)
+            @Html.ValidationMessageFor(model => model.SourceOfRepayment)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ModeOfRepayment)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ModeOfRepayment)
+            @Html.ValidationMessageFor(model => model.ModeOfRepayment)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Security)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Security)
+            @Html.ValidationMessageFor(model => model.Security)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Guarantee)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Guarantee)
+            @Html.ValidationMessageFor(model => model.Guarantee)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

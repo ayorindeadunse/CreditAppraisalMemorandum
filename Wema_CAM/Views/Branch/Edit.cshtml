@@ -1,0 +1,86 @@
+﻿@model Wema_CAM.Models.Branch
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Branch</legend>
+
+        @Html.HiddenFor(model => model.BranchId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BranchName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BranchName)
+            @Html.ValidationMessageFor(model => model.BranchName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ZoneId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ZoneId)
+            @Html.ValidationMessageFor(model => model.ZoneId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RegionId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RegionId)
+            @Html.ValidationMessageFor(model => model.RegionId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreationDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreationDate)
+            @Html.ValidationMessageFor(model => model.CreationDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateLastUpdated)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateLastUpdated)
+            @Html.ValidationMessageFor(model => model.DateLastUpdated)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UpdateUserId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UpdateUserId)
+            @Html.ValidationMessageFor(model => model.UpdateUserId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BranchShortCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BranchShortCode)
+            @Html.ValidationMessageFor(model => model.BranchShortCode)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

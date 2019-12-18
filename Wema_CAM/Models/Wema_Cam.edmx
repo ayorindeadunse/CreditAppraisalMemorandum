@@ -1,0 +1,917 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Wema_CAMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Wema_CAMModelStoreContainer">
+          <EntitySet Name="ActionAudit" EntityType="Wema_CAMModel.Store.ActionAudit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AdditionalComment" EntityType="Wema_CAMModel.Store.AdditionalComment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ApplicantsBrief" EntityType="Wema_CAMModel.Store.ApplicantsBrief" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ApplicantType" EntityType="Wema_CAMModel.Store.ApplicantType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ApplicationType" EntityType="Wema_CAMModel.Store.ApplicationType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ApprovalLimit" EntityType="Wema_CAMModel.Store.ApprovalLimit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Audit" EntityType="Wema_CAMModel.Store.Audit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Branch" EntityType="Wema_CAMModel.Store.Branch" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CAM" EntityType="Wema_CAMModel.Store.CAM" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CAM_User" EntityType="Wema_CAMModel.Store.CAM_User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Comment" EntityType="Wema_CAMModel.Store.Comment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CreditRequestSummary" EntityType="Wema_CAMModel.Store.CreditRequestSummary" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FacilityType" EntityType="Wema_CAMModel.Store.FacilityType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="fileinformation" EntityType="Wema_CAMModel.Store.fileinformation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IndustryType" EntityType="Wema_CAMModel.Store.IndustryType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Region" EntityType="Wema_CAMModel.Store.Region" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sampleJTE" EntityType="Wema_CAMModel.Store.sampleJTE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="State" EntityType="Wema_CAMModel.Store.State" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Status" EntityType="Wema_CAMModel.Store.Status" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserFunction" EntityType="Wema_CAMModel.Store.UserFunction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Zone" EntityType="Wema_CAMModel.Store.Zone" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="ActionAudit">
+          <Key>
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="ActionId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Action" Type="nvarchar" MaxLength="50" />
+          <Property Name="DestinationUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CAMId" Type="bigint" />
+          <Property Name="FromUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateActionPerformed" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AdditionalComment">
+          <Key>
+            <PropertyRef Name="addcommentid" />
+          </Key>
+          <Property Name="addcommentid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CAMId" Type="bigint" Nullable="false" />
+          <Property Name="Username" Type="nchar" MaxLength="50" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="CommentDate" Type="datetime" />
+          <Property Name="EditDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ApplicantsBrief">
+          <Key>
+            <PropertyRef Name="ApplicantID" />
+          </Key>
+          <Property Name="ApplicantID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicantType" Type="bigint" />
+          <Property Name="CustomerID" Type="varchar" MaxLength="50" />
+          <Property Name="AccountNumber" Type="int" />
+          <Property Name="LegalIdentityName" Type="varchar" MaxLength="100" />
+          <Property Name="YearOfIncorporation" Type="varchar" MaxLength="4" />
+          <Property Name="RCNumber" Type="varchar" MaxLength="50" />
+          <Property Name="BusinessAddress" Type="varchar" MaxLength="300" />
+          <Property Name="NameOfAuditors" Type="varchar" MaxLength="100" />
+          <Property Name="NatureOfBusiness" Type="varchar" MaxLength="100" />
+          <Property Name="Industry" Type="bigint" />
+          <Property Name="ProductRange" Type="varchar" MaxLength="100" />
+          <Property Name="MajorClients" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CreationDate" Type="date" />
+          <Property Name="DateLastUpdated" Type="datetime" />
+          <Property Name="UpdateUserId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ApplicantType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descritpion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ApplicationType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="applicationdescription" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ApprovalLimit">
+          <Key>
+            <PropertyRef Name="LimitID" />
+          </Key>
+          <Property Name="LimitID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="10" />
+          <Property Name="ApprovalLimit" Type="decimal" Scale="2" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="AuditId" />
+          </Key>
+          <Property Name="AuditId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActivityDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="BranchName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ZoneId" Type="int" Nullable="false" />
+          <Property Name="RegionId" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="DateLastUpdated" Type="datetime" />
+          <Property Name="UpdateUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="BranchShortCode" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="CAM">
+          <Key>
+            <PropertyRef Name="CAMId" />
+          </Key>
+          <Property Name="CAMId" Type="bigint" Nullable="false" />
+          <Property Name="ApplicantID" Type="bigint" />
+          <Property Name="BranchProcessedFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZoneProcessedFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegionProcessedFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ownership" Type="text" />
+          <Property Name="BoardAndManagement" Type="text" />
+          <Property Name="ProfileOfBoardAndManagement" Type="text" />
+          <Property Name="HistoryAndScopeOfOperation" Type="text" />
+          <Property Name="BorrowingPowerOfDirectors" Type="text" />
+          <Property Name="IndustryAnalysis" Type="text" />
+          <Property Name="BackgroundToTheRequest" Type="text" />
+          <Property Name="TransactionDetails" Type="text" />
+          <Property Name="AccountPerformanceWithWemaBank" Type="text" />
+          <Property Name="HighlightsOfOtherPerformanceIndicators" Type="text" />
+          <Property Name="Balance" Type="text" />
+          <Property Name="SwingAnalysisForLastSixMonths" Type="text" />
+          <Property Name="CommentsOnAccountPerformance" Type="text" />
+          <Property Name="AccountPerformanceWithOtherBanks" Type="text" />
+          <Property Name="ProportionalAnalysisOfCompanyTurnover" Type="text" />
+          <Property Name="TotalBorrowingFromWemaAndOtherBanks" Type="text" />
+          <Property Name="RelatedFacilities" Type="text" />
+          <Property Name="ExistingBorrowingFromOtherBanks" Type="text" />
+          <Property Name="CreditCheckOnCRMS" Type="text" />
+          <Property Name="FinancialReview" Type="text" />
+          <Property Name="CapitalAdequacy" Type="text" />
+          <Property Name="TransactionDynamics" Type="text" />
+          <Property Name="ConditionsPrecedentToDrawdown" Type="text" />
+          <Property Name="ConditionsAfterDrawdown" Type="text" />
+          <Property Name="RiskControlMeasures" Type="text" />
+          <Property Name="KeyRisksAndMitigatingMeasures" Type="text" />
+          <Property Name="JustificationForTheCredit" Type="text" />
+          <Property Name="Security" Type="text" />
+          <Property Name="Guarantee" Type="text" />
+          <Property Name="CreditRiskRating" Type="text" />
+          <Property Name="RegionalExecutiveComments" Type="text" />
+          <Property Name="CreditQualityAssuranceReview" Type="text" />
+          <Property Name="Recommendation" Type="text" />
+          <Property Name="TotalFacilityAmount" Type="decimal" Scale="2" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="InitiatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DestinationUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreationDate" Type="date" />
+          <Property Name="DateLastUpdated" Type="datetime" />
+          <Property Name="UpdateUserId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CAM_User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="BranchId" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="ZoneId" Type="int" Nullable="false" />
+          <Property Name="RegionId" Type="int" Nullable="false" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="tinyint" />
+          <Property Name="CanApprove" Type="bit" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="DateLastUpdated" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserId" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CAMId" Type="bigint" Nullable="false" />
+          <Property Name="Username" Type="nchar" MaxLength="50" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="CommentDate" Type="datetime" />
+          <Property Name="EditDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CreditRequestSummary">
+          <Key>
+            <PropertyRef Name="FacilityID" />
+          </Key>
+          <Property Name="ApplicantID" Type="bigint" />
+          <Property Name="CAMId" Type="bigint" />
+          <Property Name="FacilityID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Facility" Type="bigint" />
+          <Property Name="FacilityAmount" Type="decimal" Scale="2" />
+          <Property Name="ApplicationType" Type="int" />
+          <Property Name="Purpose" Type="text" />
+          <Property Name="Tenor" Type="text" />
+          <Property Name="InterestRate" Type="text" />
+          <Property Name="ProcessingFee" Type="text" />
+          <Property Name="ManagementFee" Type="text" />
+          <Property Name="LCCommission" Type="text" />
+          <Property Name="OtherCharges" Type="text" />
+          <Property Name="COTRate" Type="text" />
+          <Property Name="SourceOfRepayment" Type="text" />
+          <Property Name="ModeOfRepayment" Type="text" />
+          <Property Name="Security" Type="text" />
+          <Property Name="Guarantee" Type="text" />
+          <Property Name="CreationDate" Type="date" />
+          <Property Name="DateLastUpdated" Type="datetime" />
+          <Property Name="UpdateUserId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FacilityType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="fileinformation">
+          <Key>
+            <PropertyRef Name="fileid" />
+          </Key>
+          <Property Name="fileid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CAMId" Type="bigint" />
+          <Property Name="filename" Type="nvarchar" MaxLength="100" />
+          <Property Name="filepath" Type="text" />
+        </EntityType>
+        <EntityType Name="IndustryType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="industrydescription" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="RegionId" />
+          </Key>
+          <Property Name="RegionName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="RegionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="DateLastUpdated" Type="datetime" />
+          <Property Name="UpdateUserId" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sampleJTE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="entry" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserFunction">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" MaxLength="40" />
+          <Property Name="ShortDescription" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Zone">
+          <Key>
+            <PropertyRef Name="ZoneId" />
+          </Key>
+          <Property Name="ZoneId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ZoneName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="RegionId" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="DateLastUpdated" Type="datetime" />
+          <Property Name="UpdateUserId" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Wema_CAMModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="Wema_CAMEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Zone" EntityType="Wema_CAMModel.Zone" />
+          <EntitySet Name="Branch" EntityType="Wema_CAMModel.Branch" />
+          <EntitySet Name="Region" EntityType="Wema_CAMModel.Region" />
+          <EntitySet Name="sampleJTE" EntityType="Wema_CAMModel.sampleJTE" />
+          <EntitySet Name="ApplicantType" EntityType="Wema_CAMModel.ApplicantType" />
+          <EntitySet Name="State" EntityType="Wema_CAMModel.State" />
+          <EntitySet Name="Status" EntityType="Wema_CAMModel.Status" />
+          <EntitySet Name="UserFunction" EntityType="Wema_CAMModel.UserFunction" />
+          <EntitySet Name="ApprovalLimit" EntityType="Wema_CAMModel.ApprovalLimit" />
+          <EntitySet Name="Comment" EntityType="Wema_CAMModel.Comment" />
+          <EntitySet Name="ActionAudit" EntityType="Wema_CAMModel.ActionAudit" />
+          <EntitySet Name="Audit" EntityType="Wema_CAMModel.Audit" />
+          <EntitySet Name="FacilityType" EntityType="Wema_CAMModel.FacilityType" />
+          <EntitySet Name="ApplicationType" EntityType="Wema_CAMModel.ApplicationType" />
+          <EntitySet Name="IndustryType" EntityType="Wema_CAMModel.IndustryType" />
+          <EntitySet Name="fileinformation" EntityType="Wema_CAMModel.fileinformation" />
+          <EntitySet Name="CAM_User" EntityType="Wema_CAMModel.CAM_User" />
+          <EntitySet Name="CAM" EntityType="Wema_CAMModel.CAM" />
+          <EntitySet Name="CreditRequestSummary" EntityType="Wema_CAMModel.CreditRequestSummary" />
+          <EntitySet Name="AdditionalComment" EntityType="Wema_CAMModel.AdditionalComment" />
+          <EntitySet Name="ApplicantsBrief" EntityType="Wema_CAMModel.ApplicantsBrief" />
+        </EntityContainer>
+        <EntityType Name="Zone">
+          <Key>
+            <PropertyRef Name="ZoneId" />
+          </Key>
+          <Property Type="Int32" Name="ZoneId" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="ZoneName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RegionId" Nullable="false" />
+          <Property Type="DateTime" Name="CreationDate" Precision="3" />
+          <Property Type="DateTime" Name="DateLastUpdated" Precision="3" />
+          <Property Type="String" Name="UpdateUserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Type="String" Name="BranchId" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BranchName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ZoneId" Nullable="false" />
+          <Property Type="Int32" Name="RegionId" Nullable="false" />
+          <Property Type="DateTime" Name="CreationDate" Precision="3" />
+          <Property Type="DateTime" Name="DateLastUpdated" Precision="3" />
+          <Property Type="String" Name="UpdateUserId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BranchShortCode" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="RegionId" />
+          </Key>
+          <Property Type="String" Name="RegionName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RegionId" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="DateTime" Name="CreationDate" Precision="3" />
+          <Property Type="DateTime" Name="DateLastUpdated" Precision="3" />
+          <Property Type="String" Name="UpdateUserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sampleJTE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="entry" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ApplicantType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="descritpion" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="description" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Type="Byte" Name="StatusID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Description" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserFunction">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Description" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShortDescription" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ApprovalLimit">
+          <Key>
+            <PropertyRef Name="LimitID" />
+          </Key>
+          <Property Type="Int32" Name="LimitID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Grade" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ApprovalLimit1" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="CAMId" Nullable="false" />
+          <Property Type="String" Name="Username" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Designation" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Comment1" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CommentDate" Precision="3" />
+          <Property Type="DateTime" Name="EditDate" Precision="3" />
+        </EntityType>
+        <EntityType Name="ActionAudit">
+          <Key>
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Type="Int64" Name="ActionId" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="CAMId" />
+          <Property Type="String" Name="Action" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FromUserId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Designation" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DestinationUserId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateActionPerformed" Precision="3" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="AuditId" />
+          </Key>
+          <Property Type="Int64" Name="AuditId" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Designation" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ActivityDate" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FacilityType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="description" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ApplicationType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="applicationdescription" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="IndustryType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="industrydescription" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="fileinformation">
+          <Key>
+            <PropertyRef Name="fileid" />
+          </Key>
+          <Property Type="Int64" Name="fileid" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="CAMId" />
+          <Property Type="String" Name="filename" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="filepath" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CAM_User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmailAddress" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Role" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BranchId" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ZoneId" Nullable="false" />
+          <Property Type="Int32" Name="RegionId" Nullable="false" />
+          <Property Type="String" Name="Grade" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="Status" />
+          <Property Type="Boolean" Name="CanApprove" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="DateLastUpdated" Nullable="false" Precision="3" />
+          <Property Type="String" Name="UpdateUserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CAM">
+          <Key>
+            <PropertyRef Name="CAMId" />
+          </Key>
+          <Property Type="Int64" Name="CAMId" Nullable="false" />
+          <Property Type="Int64" Name="ApplicantID" />
+          <Property Type="String" Name="BranchProcessedFrom" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ZoneProcessedFrom" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RegionProcessedFrom" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Ownership" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BoardAndManagement" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProfileOfBoardAndManagement" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HistoryAndScopeOfOperation" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BorrowingPowerOfDirectors" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IndustryAnalysis" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BackgroundToTheRequest" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TransactionDetails" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AccountPerformanceWithWemaBank" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HighlightsOfOtherPerformanceIndicators" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Balance" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SwingAnalysisForLastSixMonths" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CommentsOnAccountPerformance" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AccountPerformanceWithOtherBanks" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProportionalAnalysisOfCompanyTurnover" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TotalBorrowingFromWemaAndOtherBanks" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RelatedFacilities" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ExistingBorrowingFromOtherBanks" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CreditCheckOnCRMS" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FinancialReview" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CapitalAdequacy" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TransactionDynamics" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ConditionsPrecedentToDrawdown" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ConditionsAfterDrawdown" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RiskControlMeasures" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="KeyRisksAndMitigatingMeasures" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="JustificationForTheCredit" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Security" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Guarantee" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CreditRiskRating" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RegionalExecutiveComments" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CreditQualityAssuranceReview" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Recommendation" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="TotalFacilityAmount" Precision="18" Scale="2" />
+          <Property Type="String" Name="Status" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="InitiatedBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DestinationUserId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreationDate" Precision="0" />
+          <Property Type="DateTime" Name="DateLastUpdated" Precision="3" />
+          <Property Type="String" Name="UpdateUserId" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CreditRequestSummary">
+          <Key>
+            <PropertyRef Name="FacilityID" />
+          </Key>
+          <Property Type="Int64" Name="ApplicantID" />
+          <Property Type="Int64" Name="CAMId" />
+          <Property Type="Int64" Name="FacilityID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Facility" />
+          <Property Type="Decimal" Name="FacilityAmount" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="ApplicationType" />
+          <Property Type="String" Name="Purpose" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Tenor" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InterestRate" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProcessingFee" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ManagementFee" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LCCommission" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OtherCharges" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COTRate" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SourceOfRepayment" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ModeOfRepayment" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Security" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Guarantee" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreationDate" Precision="0" />
+          <Property Type="DateTime" Name="DateLastUpdated" Precision="3" />
+          <Property Type="String" Name="UpdateUserId" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AdditionalComment">
+          <Key>
+            <PropertyRef Name="addcommentid" />
+          </Key>
+          <Property Type="Int64" Name="addcommentid" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="CAMId" Nullable="false" />
+          <Property Type="String" Name="Username" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Designation" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Comment" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CommentDate" Precision="3" />
+          <Property Type="DateTime" Name="EditDate" Precision="3" />
+        </EntityType>
+        <EntityType Name="ApplicantsBrief">
+          <Key>
+            <PropertyRef Name="ApplicantID" />
+          </Key>
+          <Property Type="Int64" Name="ApplicantID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="ApplicantType" />
+          <Property Type="String" Name="CustomerID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="AccountNumber" />
+          <Property Type="String" Name="LegalIdentityName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YearOfIncorporation" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RCNumber" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BusinessAddress" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NameOfAuditors" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NatureOfBusiness" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="Industry" />
+          <Property Type="String" Name="ProductRange" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MajorClients" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreationDate" Precision="0" />
+          <Property Type="DateTime" Name="DateLastUpdated" Precision="3" />
+          <Property Type="String" Name="UpdateUserId" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Wema_CAMModelStoreContainer" CdmEntityContainer="Wema_CAMEntities">
+          <EntitySetMapping Name="Zone">
+            <EntityTypeMapping TypeName="Wema_CAMModel.Zone">
+              <MappingFragment StoreEntitySet="Zone">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="DateLastUpdated" ColumnName="DateLastUpdated" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branch">
+            <EntityTypeMapping TypeName="Wema_CAMModel.Branch">
+              <MappingFragment StoreEntitySet="Branch">
+                <ScalarProperty Name="BranchShortCode" ColumnName="BranchShortCode" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="DateLastUpdated" ColumnName="DateLastUpdated" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Region">
+            <EntityTypeMapping TypeName="Wema_CAMModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="DateLastUpdated" ColumnName="DateLastUpdated" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sampleJTE">
+            <EntityTypeMapping TypeName="Wema_CAMModel.sampleJTE">
+              <MappingFragment StoreEntitySet="sampleJTE">
+                <ScalarProperty Name="entry" ColumnName="entry" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantType">
+            <EntityTypeMapping TypeName="Wema_CAMModel.ApplicantType">
+              <MappingFragment StoreEntitySet="ApplicantType">
+                <ScalarProperty Name="descritpion" ColumnName="descritpion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="State">
+            <EntityTypeMapping TypeName="Wema_CAMModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="Wema_CAMModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserFunction">
+            <EntityTypeMapping TypeName="Wema_CAMModel.UserFunction">
+              <MappingFragment StoreEntitySet="UserFunction">
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApprovalLimit">
+            <EntityTypeMapping TypeName="Wema_CAMModel.ApprovalLimit">
+              <MappingFragment StoreEntitySet="ApprovalLimit">
+                <ScalarProperty Name="ApprovalLimit1" ColumnName="ApprovalLimit" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="LimitID" ColumnName="LimitID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comment">
+            <EntityTypeMapping TypeName="Wema_CAMModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="Comment1" ColumnName="Comment" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="CAMId" ColumnName="CAMId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActionAudit">
+            <EntityTypeMapping TypeName="Wema_CAMModel.ActionAudit">
+              <MappingFragment StoreEntitySet="ActionAudit">
+                <ScalarProperty Name="DateActionPerformed" ColumnName="DateActionPerformed" />
+                <ScalarProperty Name="DestinationUserId" ColumnName="DestinationUserId" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="CAMId" ColumnName="CAMId" />
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Audit">
+            <EntityTypeMapping TypeName="Wema_CAMModel.Audit">
+              <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AuditId" ColumnName="AuditId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacilityType">
+            <EntityTypeMapping TypeName="Wema_CAMModel.FacilityType">
+              <MappingFragment StoreEntitySet="FacilityType">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationType">
+            <EntityTypeMapping TypeName="Wema_CAMModel.ApplicationType">
+              <MappingFragment StoreEntitySet="ApplicationType">
+                <ScalarProperty Name="applicationdescription" ColumnName="applicationdescription" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IndustryType">
+            <EntityTypeMapping TypeName="Wema_CAMModel.IndustryType">
+              <MappingFragment StoreEntitySet="IndustryType">
+                <ScalarProperty Name="industrydescription" ColumnName="industrydescription" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fileinformation">
+            <EntityTypeMapping TypeName="Wema_CAMModel.fileinformation">
+              <MappingFragment StoreEntitySet="fileinformation">
+                <ScalarProperty Name="filepath" ColumnName="filepath" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="CAMId" ColumnName="CAMId" />
+                <ScalarProperty Name="fileid" ColumnName="fileid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAM_User">
+            <EntityTypeMapping TypeName="Wema_CAMModel.CAM_User">
+              <MappingFragment StoreEntitySet="CAM_User">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="DateLastUpdated" ColumnName="DateLastUpdated" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CanApprove" ColumnName="CanApprove" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAM">
+            <EntityTypeMapping TypeName="Wema_CAMModel.CAM">
+              <MappingFragment StoreEntitySet="CAM">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="DateLastUpdated" ColumnName="DateLastUpdated" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="DestinationUserId" ColumnName="DestinationUserId" />
+                <ScalarProperty Name="InitiatedBy" ColumnName="InitiatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TotalFacilityAmount" ColumnName="TotalFacilityAmount" />
+                <ScalarProperty Name="Recommendation" ColumnName="Recommendation" />
+                <ScalarProperty Name="CreditQualityAssuranceReview" ColumnName="CreditQualityAssuranceReview" />
+                <ScalarProperty Name="RegionalExecutiveComments" ColumnName="RegionalExecutiveComments" />
+                <ScalarProperty Name="CreditRiskRating" ColumnName="CreditRiskRating" />
+                <ScalarProperty Name="Guarantee" ColumnName="Guarantee" />
+                <ScalarProperty Name="Security" ColumnName="Security" />
+                <ScalarProperty Name="JustificationForTheCredit" ColumnName="JustificationForTheCredit" />
+                <ScalarProperty Name="KeyRisksAndMitigatingMeasures" ColumnName="KeyRisksAndMitigatingMeasures" />
+                <ScalarProperty Name="RiskControlMeasures" ColumnName="RiskControlMeasures" />
+                <ScalarProperty Name="ConditionsAfterDrawdown" ColumnName="ConditionsAfterDrawdown" />
+                <ScalarProperty Name="ConditionsPrecedentToDrawdown" ColumnName="ConditionsPrecedentToDrawdown" />
+                <ScalarProperty Name="TransactionDynamics" ColumnName="TransactionDynamics" />
+                <ScalarProperty Name="CapitalAdequacy" ColumnName="CapitalAdequacy" />
+                <ScalarProperty Name="FinancialReview" ColumnName="FinancialReview" />
+                <ScalarProperty Name="CreditCheckOnCRMS" ColumnName="CreditCheckOnCRMS" />
+                <ScalarProperty Name="ExistingBorrowingFromOtherBanks" ColumnName="ExistingBorrowingFromOtherBanks" />
+                <ScalarProperty Name="RelatedFacilities" ColumnName="RelatedFacilities" />
+                <ScalarProperty Name="TotalBorrowingFromWemaAndOtherBanks" ColumnName="TotalBorrowingFromWemaAndOtherBanks" />
+                <ScalarProperty Name="ProportionalAnalysisOfCompanyTurnover" ColumnName="ProportionalAnalysisOfCompanyTurnover" />
+                <ScalarProperty Name="AccountPerformanceWithOtherBanks" ColumnName="AccountPerformanceWithOtherBanks" />
+                <ScalarProperty Name="CommentsOnAccountPerformance" ColumnName="CommentsOnAccountPerformance" />
+                <ScalarProperty Name="SwingAnalysisForLastSixMonths" ColumnName="SwingAnalysisForLastSixMonths" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="HighlightsOfOtherPerformanceIndicators" ColumnName="HighlightsOfOtherPerformanceIndicators" />
+                <ScalarProperty Name="AccountPerformanceWithWemaBank" ColumnName="AccountPerformanceWithWemaBank" />
+                <ScalarProperty Name="TransactionDetails" ColumnName="TransactionDetails" />
+                <ScalarProperty Name="BackgroundToTheRequest" ColumnName="BackgroundToTheRequest" />
+                <ScalarProperty Name="IndustryAnalysis" ColumnName="IndustryAnalysis" />
+                <ScalarProperty Name="BorrowingPowerOfDirectors" ColumnName="BorrowingPowerOfDirectors" />
+                <ScalarProperty Name="HistoryAndScopeOfOperation" ColumnName="HistoryAndScopeOfOperation" />
+                <ScalarProperty Name="ProfileOfBoardAndManagement" ColumnName="ProfileOfBoardAndManagement" />
+                <ScalarProperty Name="BoardAndManagement" ColumnName="BoardAndManagement" />
+                <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+                <ScalarProperty Name="RegionProcessedFrom" ColumnName="RegionProcessedFrom" />
+                <ScalarProperty Name="ZoneProcessedFrom" ColumnName="ZoneProcessedFrom" />
+                <ScalarProperty Name="BranchProcessedFrom" ColumnName="BranchProcessedFrom" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="CAMId" ColumnName="CAMId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditRequestSummary">
+            <EntityTypeMapping TypeName="Wema_CAMModel.CreditRequestSummary">
+              <MappingFragment StoreEntitySet="CreditRequestSummary">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="DateLastUpdated" ColumnName="DateLastUpdated" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Guarantee" ColumnName="Guarantee" />
+                <ScalarProperty Name="Security" ColumnName="Security" />
+                <ScalarProperty Name="ModeOfRepayment" ColumnName="ModeOfRepayment" />
+                <ScalarProperty Name="SourceOfRepayment" ColumnName="SourceOfRepayment" />
+                <ScalarProperty Name="COTRate" ColumnName="COTRate" />
+                <ScalarProperty Name="OtherCharges" ColumnName="OtherCharges" />
+                <ScalarProperty Name="LCCommission" ColumnName="LCCommission" />
+                <ScalarProperty Name="ManagementFee" ColumnName="ManagementFee" />
+                <ScalarProperty Name="ProcessingFee" ColumnName="ProcessingFee" />
+                <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+                <ScalarProperty Name="Tenor" ColumnName="Tenor" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
+                <ScalarProperty Name="FacilityAmount" ColumnName="FacilityAmount" />
+                <ScalarProperty Name="Facility" ColumnName="Facility" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="CAMId" ColumnName="CAMId" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdditionalComment">
+            <EntityTypeMapping TypeName="Wema_CAMModel.AdditionalComment">
+              <MappingFragment StoreEntitySet="AdditionalComment">
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="CAMId" ColumnName="CAMId" />
+                <ScalarProperty Name="addcommentid" ColumnName="addcommentid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantsBrief">
+            <EntityTypeMapping TypeName="Wema_CAMModel.ApplicantsBrief">
+              <MappingFragment StoreEntitySet="ApplicantsBrief">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="DateLastUpdated" ColumnName="DateLastUpdated" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="MajorClients" ColumnName="MajorClients" />
+                <ScalarProperty Name="ProductRange" ColumnName="ProductRange" />
+                <ScalarProperty Name="Industry" ColumnName="Industry" />
+                <ScalarProperty Name="NatureOfBusiness" ColumnName="NatureOfBusiness" />
+                <ScalarProperty Name="NameOfAuditors" ColumnName="NameOfAuditors" />
+                <ScalarProperty Name="BusinessAddress" ColumnName="BusinessAddress" />
+                <ScalarProperty Name="RCNumber" ColumnName="RCNumber" />
+                <ScalarProperty Name="YearOfIncorporation" ColumnName="YearOfIncorporation" />
+                <ScalarProperty Name="LegalIdentityName" ColumnName="LegalIdentityName" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ApplicantType" ColumnName="ApplicantType" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>

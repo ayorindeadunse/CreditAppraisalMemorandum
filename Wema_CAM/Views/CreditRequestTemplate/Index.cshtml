@@ -1,0 +1,342 @@
+﻿@model IEnumerable<Wema_CAM.Models.CreditRequestSummary>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jtable/jquery.jtable.js")" type="text/javascript"></script>
+
+
+<h2></h2>
+
+<div id="FormTemplate"></div>
+ <input type="button" id="continue" value="Continue" />
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#FormTemplate').jtable({
+            title: 'List of Credit Request Summaries',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            defaultSorting: 'Name ASC', //Set default sorting
+            selecting: true,
+            multiselect: true,//Disable multiple selection of records
+            selectingCheckboxes: true,
+            actions: {
+                listAction: 'CreditRequestTemplate/GetCreditRequestSummaryList',
+                //deleteAction: 'CreditRequestTemplate/DeleteCreditRequestSummary',
+                updateAction: 'CreditRequestTemplate/EditCreditRequestSummary',
+                createAction: 'CreditRequestTemplate/AddCreditRequestSummary'
+            },
+            fields: {
+                FacilityID: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                Facility: {
+                   title: 'Facility',
+                   width: '23%',
+                   options:'CreditRequestTemplate/GetFacilityType'
+                },
+                FacilityAmount: {
+                    title: 'Facility Amount(Figures only, no commas)',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                ApplicationType: {
+                    title: 'Application Type',
+                    width: '23%',
+                  options: 'CreditRequestTemplate/GetApplicationType'
+                }
+                ,
+                Purpose: {
+                    title: 'Purpose',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                Tenor: {
+                    title: 'Tenor',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                InterestRate: {
+                    title: 'Interest Rate',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                ProcessingFee: {
+                    title: 'Commitment Fee',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+
+                ManagementFee: {
+                    title: 'Management Fee',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                LCCommission: {
+                    title: 'LC Commission',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                OtherCharges: {
+                    title: 'Other Charges',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                COTRate: {
+                    title: 'COT Rate',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                SourceOfRepayment: {
+                    title: 'Source Of Repayment',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                ModeOfRepayment: {
+                    title: 'Mode Of Repayment',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                Security: {
+                    title: 'Security',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                Guarantee: {
+                    title: 'Guarantee',
+                    width: '23%',
+                    create: true,
+                    edit: true,
+                    list: true
+                }
+                ,
+                         
+                CreationDate: {
+                    title: 'Date Created',
+                    width: '23%',
+                    create: false,
+                    edit: false,
+                    list:false
+                }
+                ,
+                DateLastUpdated: {
+                    title: 'Date Updated',
+                    width: '23%',
+                    create: false,
+                    edit: false,
+                    list: false
+                }
+                ,              
+                UpdateUserId: {
+                    title: 'Updated by',
+                    width: '23%',
+                    create: false,
+                    edit: false,
+                    list:false
+                },
+                CAMId:
+                    {
+                        title: 'CAM ID',
+                        width: '23%',
+                        create: false,
+                        edit: false,
+                        list: false
+                    },
+                
+            }
+        });
+
+        //Load student list from server
+        $('#FormTemplate').jtable('load');
+    });
+ 
+</script>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FacilityID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Facility)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FacilityAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicantType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Purpose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tenor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InterestRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProcessingFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagementFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LCCommission)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OtherCharges)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COTRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SourceOfRepayment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModeOfRepayment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Security)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Guarantee)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FacilityID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Facility)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FacilityAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicantType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Purpose)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tenor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InterestRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProcessingFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagementFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LCCommission)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherCharges)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COTRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SourceOfRepayment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModeOfRepayment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Security)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Guarantee)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>*@
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#continue").click(function (e) {
+            e.preventDefault();
+           var $selectedRows = $('#FormTemplate').jtable('selectedRows');
+            $selectedRows.each(function () {
+                var record = $(this).data('record');
+               var applicantid = record.ApplicantID;
+                // window.location.href = '/CreditRequest/Index/' + applicantid;
+                // var notSeen = localStorage['seen'];
+                // if (!notSeen) {
+                // open popup
+                //  Session['appid'] = applicantid;
+
+                //window.location.href = '/WemaCAM/CAMTemplate/Edit/';
+               window.location.href = '/CAMTemplate/Edit/';
+                // }
+            });
+
+        });
+    });
+
+</script>
+
+
+

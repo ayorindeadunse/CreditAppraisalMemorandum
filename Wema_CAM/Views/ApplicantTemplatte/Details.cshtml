@@ -1,0 +1,120 @@
+﻿@model Wema_CAM.Models.ApplicantsBrief
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ApplicantsBrief</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ApplicantID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ApplicantID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ApplicantType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ApplicantType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AccountNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AccountNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LegalIdentityName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LegalIdentityName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.YearOfIncorporation)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.YearOfIncorporation)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RCNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RCNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BusinessAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BusinessAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NameOfAuditors)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NameOfAuditors)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NatureOfBusiness)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NatureOfBusiness)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Industry)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Industry)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductRange)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductRange)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MajorClients)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MajorClients)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreationDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreationDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateLastUpdated)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateLastUpdated)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UpdateUserId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UpdateUserId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

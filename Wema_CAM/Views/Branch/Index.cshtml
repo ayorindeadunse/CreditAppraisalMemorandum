@@ -1,0 +1,152 @@
+﻿@model IEnumerable<Wema_CAM.Models.Branch>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jtable/jquery.jtable.js")" type="text/javascript"></script>
+
+<h2></h2>
+
+<div id="FormTemplate"></div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#FormTemplate').jtable({
+            title: 'Branch List',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            defaultSorting: 'Name ASC', //Set default sorting
+            actions: {
+                listAction: 'Branch/GetBranchList',
+                deleteAction: 'Branch/DeleteBranch',
+                updateAction: 'Branch/EditBranch',
+                createAction: 'Branch/AddBranch'
+            },
+            fields: {
+                BranchId: {
+                    title: 'Branch Code',
+                    key: true,
+                    create: true,
+                    edit: false,
+                    list: true
+                },
+                BranchName: {
+                    title: 'Name',
+                    width: '23%',
+                    edit: true,
+                    list: true
+                }
+                ,
+                ZoneId: {
+                    title: 'Zone',
+                    width: '23%',
+                    options: 'Branch/GetZoneList'
+                },
+                RegionId: {
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                CreationDate: {
+                    title: 'Date Created',
+                    width: '23%',
+                    create: false,
+                    edit: false
+                }
+                ,
+                DateLastUpdated: {
+                    title: 'Date Updated',
+                    width: '23%',
+                    create: false,
+                    edit: false
+                }
+                ,
+                //BranchShortCode: {
+                //    title: 'Branch Sort Code',
+                //    width: '23%',
+                //    //edit: true,
+                //    //list: true
+
+                //}
+                //,
+                UpdateUserId: {
+                    title: 'Updated by',
+                    width: '23%',
+                    create: false,
+                    edit: false
+                }
+            }
+        });
+
+        //Load student list from server
+        $('#FormTemplate').jtable('load');
+    });
+
+</script>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BranchName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZoneId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BranchId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateLastUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BranchShortCode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZoneId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateLastUpdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchShortCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BranchId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BranchId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BranchId })
+        </td>
+    </tr>
+}
+
+</table>*@

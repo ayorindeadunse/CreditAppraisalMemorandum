@@ -1,0 +1,169 @@
+﻿@*@model IEnumerable<Wema_CAM.Models.ApplicantsBrief>*@
+
+@model IEnumerable<Wema_CAM.Models.CAM>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.min.js")" type="text/javascript"></script>
+
+@*<h2>Index</h2>*@
+
+@using (Html.BeginForm("Index", "ApplicantTemplatte", null, FormMethod.Post))
+{
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+@*<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicantID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicantType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LegalIdentityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearOfIncorporation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RCNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusinessAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameOfAuditors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NatureOfBusiness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Industry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductRange)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MajorClients)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateLastUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateUserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicantID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicantType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LegalIdentityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearOfIncorporation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RCNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusinessAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameOfAuditors)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NatureOfBusiness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Industry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductRange)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MajorClients)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateLastUpdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateUserId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>*@
+    
+}
+   Start Date: <input type="text" id="sstartdate" /> End Date: <input type="text" id="eenddate" /> <input type="submit" id="searchTemplate" value="Search Template"/>
+@*</table>*@
+
+ 
+
+<script type="text/javascript">
+    $(function () {
+        $('#sstartdate').datepicker();
+    });
+    $(function () {
+        $('#eenddate').datepicker();
+    });
+</script>
+
+@*<script type ="text/javascript">
+    //Approve Button click
+    $(document).ready(function () {
+        if ($("#searchTemplate").click(function (e) {
+               e.preventDefault();
+               $.ajax({
+            type: "POST",
+                url: "/WemaCAM/ApplicantTemplate/retrieveTemplateCams",
+           // datatype: "html",
+            data: {
+            sstartdate: $("#sstartdate").val(),
+                eenddate: $("#eenddate").val,
+        },
+            success: function (data, textStatus, jqXHR) {
+
+            $("#dialog-message").text(data.Message);
+           // $("#commentlist").html(data.Feedback);
+           // $("#comment").val("");
+                       $("#dialog-message").dialog({
+            modal: true,
+            buttons: {
+            Ok: function () {
+                                   $(this).dialog("close");
+        }
+        }
+        });
+        }
+        });
+        }));
+    });
+
+</script>*@

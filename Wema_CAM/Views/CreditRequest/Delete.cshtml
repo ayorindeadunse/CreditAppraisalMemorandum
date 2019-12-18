@@ -1,0 +1,131 @@
+﻿@model Wema_CAM.Models.CreditRequestSummary
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>CreditRequestSummary</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FacilityID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FacilityID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Facility)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Facility)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FacilityAmount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FacilityAmount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ApplicantType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ApplicantType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Purpose)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Purpose)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Tenor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Tenor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.InterestRate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InterestRate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProcessingFee)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProcessingFee)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ManagementFee)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ManagementFee)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LCCommission)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LCCommission)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OtherCharges)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OtherCharges)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COTRate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COTRate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SourceOfRepayment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SourceOfRepayment)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModeOfRepayment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModeOfRepayment)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Security)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Security)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Guarantee)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Guarantee)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,70 @@
+﻿@model Wema_CAM.Models.Zone
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Zone</legend>
+
+        @Html.HiddenFor(model => model.ZoneId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ZoneName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ZoneName)
+            @Html.ValidationMessageFor(model => model.ZoneName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RegionId, "Region")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("RegionId", String.Empty)
+            @Html.ValidationMessageFor(model => model.RegionId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreationDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreationDate)
+            @Html.ValidationMessageFor(model => model.CreationDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateLastUpdated)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateLastUpdated)
+            @Html.ValidationMessageFor(model => model.DateLastUpdated)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UpdateUserId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UpdateUserId)
+            @Html.ValidationMessageFor(model => model.UpdateUserId)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

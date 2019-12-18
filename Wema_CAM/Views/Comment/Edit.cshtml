@@ -1,0 +1,70 @@
+﻿@model Wema_CAM.Models.Comment
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Comment</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CAMId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CAMId)
+            @Html.ValidationMessageFor(model => model.CAMId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Comment1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Comment1)
+            @Html.ValidationMessageFor(model => model.Comment1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CommentDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CommentDate)
+            @Html.ValidationMessageFor(model => model.CommentDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EditDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EditDate)
+            @Html.ValidationMessageFor(model => model.EditDate)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

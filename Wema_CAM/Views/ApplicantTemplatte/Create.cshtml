@@ -1,0 +1,327 @@
+﻿@model Wema_CAM.Models.ApplicantsBrief
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.min.js")" type="text/javascript"></script>
+
+
+<h3>Search for CAMs using the dates as filters. You can make use of the templates provided to create new CAMs.</h3>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+       @* <legend>ApplicantsBrief</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ApplicantID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ApplicantID)
+            @Html.ValidationMessageFor(model => model.ApplicantID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ApplicantType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ApplicantType)
+            @Html.ValidationMessageFor(model => model.ApplicantType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AccountNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AccountNumber)
+            @Html.ValidationMessageFor(model => model.AccountNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LegalIdentityName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LegalIdentityName)
+            @Html.ValidationMessageFor(model => model.LegalIdentityName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.YearOfIncorporation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.YearOfIncorporation)
+            @Html.ValidationMessageFor(model => model.YearOfIncorporation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RCNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RCNumber)
+            @Html.ValidationMessageFor(model => model.RCNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BusinessAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BusinessAddress)
+            @Html.ValidationMessageFor(model => model.BusinessAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NameOfAuditors)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NameOfAuditors)
+            @Html.ValidationMessageFor(model => model.NameOfAuditors)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NatureOfBusiness)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NatureOfBusiness)
+            @Html.ValidationMessageFor(model => model.NatureOfBusiness)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Industry)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Industry)
+            @Html.ValidationMessageFor(model => model.Industry)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductRange)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductRange)
+            @Html.ValidationMessageFor(model => model.ProductRange)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MajorClients)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MajorClients)
+            @Html.ValidationMessageFor(model => model.MajorClients)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreationDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreationDate)
+            @Html.ValidationMessageFor(model => model.CreationDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateLastUpdated)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateLastUpdated)
+            @Html.ValidationMessageFor(model => model.DateLastUpdated)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UpdateUserId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UpdateUserId)
+            @Html.ValidationMessageFor(model => model.UpdateUserId)
+        </div>*@
+
+        <p>
+            
+        Start Date: <input type="text" name="sstartdate" id="sstartdate" /> End Date: <input type="text" name="eenddate" id="eenddate" /> <input type="submit" value="Search" />
+        </p>
+        <br />
+        <br />
+        @if(ViewBag.SpecifyDate != null)
+        {
+        <h3>@ViewBag.SpecifyDate</h3>
+        }
+        <br />
+        <br />
+        
+         <table>
+    <tr>
+        <th>
+            CAM Id
+        </th>
+        
+        <th>
+           Initiated By
+        </th>       
+        <th>
+            Current Location
+        </th> 
+        <th>
+            Customer Name
+        </th>
+       @* <th>
+            Date Initiated
+        </th>*@ 
+        <th>
+            Facility Type
+        </th>
+         <th>
+            Facility Amount
+        </th>
+       @* <th>
+            Time Elapsed
+        </th>*@
+        <th>
+            Date Last Updated
+        </th>
+        <th>
+            Time Elapsed
+        </th>
+       
+         @*  <th>
+            Status
+        </th>      
+              *@
+    </tr>
+        @if(ViewBag.TemplateCAM != null)
+        {
+        foreach (Wema_CAM.PendingCamList c in ViewBag.TemplateCAM) {
+    <tr>
+        <td>
+            @c.camid
+        </td>
+        <td>
+            @c.initiatedby
+        </td>
+        <td>
+            @c.destinationuser
+        </td>
+        <td>
+            @c.customername
+        </td>
+
+       @* <td>
+            @c.dateinitiated
+        </td>*@
+        <td>
+            @c.facilitytype
+        </td>
+        <td>
+          @c.facilityamount
+        </td>
+
+        @*<td>@{
+            ;
+            //DateTime today = DateTime.Now;
+            TimeSpan ts = DateTime.Now.Subtract(c.dateinitiated);
+
+            //Get the number of seconds elapsed
+            //decimal secondselapsed = decimal.Parse(ts.TotalSeconds.ToString());
+              //@(ts.TotalDays.ToString())
+            string output = string.Format("{0:D2} hrs, {1:D2} mins, {2:D2} secs", ts.Hours, ts.Minutes, ts.Seconds);
+            @output 
+        }
+            </td>*@
+         <td>
+            @c.datelastupdated
+        </td>
+        <td>@{
+            ;
+            //DateTime today = DateTime.Now;
+            TimeSpan ts1 = DateTime.Now.Subtract(c.datelastupdated);
+
+            //Get the number of seconds elapsed
+            //decimal secondselapsed = decimal.Parse(ts.TotalSeconds.ToString());
+              //@(ts.TotalDays.ToString())
+            string output1 = string.Format("{0:D2} hrs, {1:D2} mins, {2:D2} secs", ts1.Hours, ts1.Minutes, ts1.Seconds);
+            @output1 
+        }
+            </td>
+        
+            @*decimal timeelapsedinseconds = secondselapsed / 1;
+            
+           
+      
+        @foreach (decimal secondselapsed in ViewBag.TotalSecondsCAMElapsed) {
+            if (secondselapsed > 1 && secondselapsed < 60)
+            {
+                decimal timeelapsedinseconds = secondselapsed/1;
+                <td>
+                    @Math.Round(timeelapsedinseconds,0) seconds pending
+                </td>
+        }
+        else if(secondselapsed > 60 && secondselapsed < 3600) {
+            decimal timeelapsedinminutes = secondselapsed/60;
+            <td>
+                @Math.Round(timeelapsedinminutes,0) minutes pending
+            </td>
+        }
+            else if(secondselapsed > 3600 && secondselapsed < 86400){
+                decimal timeelapsedinhours = secondselapsed/3600;
+                <td>
+                    @Math.Round(timeelapsedinhours,0) hours pending
+                </td>      
+        }
+        else if(secondselapsed > 86400 && secondselapsed < 604800){
+            decimal timeelapsedindays = secondselapsed/86400;
+            <td>
+                @Math.Round(timeelapsedindays,0) days pending
+            </td>
+        }
+        else if(secondselapsed > 604800 && secondselapsed < 31449600){
+            decimal timeelapsedinweeks = secondselapsed/604800;
+            <td>
+                @Math.Round(timeelapsedinweeks,0) weeks pending
+                </td>
+        }
+        else if(secondselapsed > 31449600){
+            decimal timeelapsedinyears = secondselapsed/31449600;
+            <td>
+                @Math.Round(timeelapsedinyears,0) years pending
+            </td>
+        }
+        *@@*<td>
+            @c.status     
+               </td>
+        *@
+
+      
+       <td>        
+           @* @Html.ActionLink("Use Template", "Index", "ApplicantTemplate", new { Id = c.camid },"")*@
+
+             @Html.ActionLink("Use Template", "Create", "ApplicantTemplate", new { Id = c.camid },"")
+           
+        </td>
+        
+        
+       
+             
+    </tr>
+        }
+}
+</table>
+    </fieldset>
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('#sstartdate').datepicker();
+    });
+    $(function () {
+        $('#eenddate').datepicker();
+    });
+</script>

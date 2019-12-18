@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Credit Appraisal Memorandum</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        <link href="@Url.Content("~/Content/themes/metroblue/jquery-ui.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/jquery-te-1.4.0.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Scripts/jtable/themes/metro/pink/jtable.css")" rel="stylesheet" type="text/css" />
+       @* @Scripts.Render("~/bundles/jquery")*@
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                   
+                    <p class="site-title"><img src="@Url.Content("~/Images/logo-60.gif")" /></p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+
+                    @if (Session["UserFunction"] != null )
+                    { 
+                        if(Session["UserFunction"].ToString() == "RM")
+                        {
+                         <ul id="menu">
+                            <li>@Html.ActionLink("Create CAM", "Index", "Applicant")</li>
+                             <li>@Html.ActionLink("Use CAM Template", "Create","ApplicantTemplatte")</li>
+                           @* <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        </ul>
+                        }
+                        else if (Session["UserFunction"].ToString() == "BDM")
+                        {
+                             <ul id="menu">
+                            <li>@Html.ActionLink("View CAMs in queue", "Index", "CAMViewer")</li>
+                           @* <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        </ul>
+
+                        }
+                        else if(Session["UserFunction"].ToString() == "ZM")
+                        {
+                            <ul id="menu">
+                            <li>@Html.ActionLink("View CAMs in queue", "Index", "CAMViewer")</li>
+                           @* <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        </ul>
+                            
+                        }
+                         else if(Session["UserFunction"].ToString() == "UH")
+                        {
+                            <ul id="menu">
+                            <li>@Html.ActionLink("View CAMs in queue", "Index", "CAMViewer")</li>
+                           @* <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        </ul>
+                            
+                        }
+                         else if(Session["UserFunction"].ToString() == "GH")
+                        {
+                            <ul id="menu">
+                            <li>@Html.ActionLink("View CAMs in queue", "Index", "CAMViewer")</li>
+                           @* <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        </ul>
+                            
+                        }
+                        else if(Session["UserFunction"].ToString() == "RE")
+                        {
+                            <ul id="menu">
+                            <li>@Html.ActionLink("View CAMs in queue", "Index", "CAMViewer")</li>
+                           @* <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        </ul>
+                    }
+                        else if (Session["UserFunction"].ToString() == "CRA")
+                        {
+                            <ul id="menu">
+                                <li>@Html.ActionLink("View CAMs in queue","Index","CRACAMViewer")</li>
+                            <li>@Html.ActionLink("View CAMs To Move", "Index", "CAMViewer")</li>
+                            <li>@Html.ActionLink("Add Applicant Type", "Index", "ApplicantType")</li>
+                                <li>@Html.ActionLink("Create User", "Index", "CAMUser")</li>
+                                <li>@Html.ActionLink("Add Branch", "Index", "Branch")</li>
+                                <li>@Html.ActionLink("Add Zone", "Index", "Zone")</li>
+                                <li>@Html.ActionLink("Add Region", "Index", "Region")</li>
+                                <li>@Html.ActionLink("Reports", "Index","CAMReports")</li>
+                                <li>@Html.ActionLink("Add Industry Type", "Index", "IndustryType")</li>
+                                <li>@Html.ActionLink("Add Facility Type", "Index", "FacilityType")</li>
+                           @* <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        </ul>
+                        }
+                       
+                        else if (Session["UserFunction"].ToString() == "CRO")
+                        {
+                             <ul id="menu">
+                            <li>@Html.ActionLink("View CAMs in queue", "Index", "CAMViewer")</li>
+                           @* <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        </ul>
+                    }
+                        else if (Session["UserFunction"].ToString() == "ED")
+                        {
+                             <ul id="menu">
+                            <li>@Html.ActionLink("View CAMs in queue", "Index", "CAMViewer")</li>
+                           @* <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        </ul>
+                        }
+                        else if(Session["UserFunction"].ToString() == "MD/CEO")
+                        {
+                             <ul id="menu">
+                            <li>@Html.ActionLink("View CAMs in queue", "Index", "CAMViewer")</li>
+                           @* <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        </ul>
+                    }
+                    else if(Session["UserFunction"].ToString() == "IC")
+                        {
+                             <ul id="menu">
+                           <li>@Html.ActionLink("Create Users", "Index", "CAMUser")</li>
+                                 <li>@Html.ActionLink("User Activity Report", "Index", "UserActivity")</li>
+                           @* <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        </ul>
+                    }
+                    }
+                    
+                   
+                    @*<nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+                    </nav>*@
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - Wema Bank Plc</p>
+                </div>
+            </div>
+        </footer>
+
+        @*@Scripts.Render("~/bundles/jquery")*@
+        @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/jqueryui")
+        @Styles.Render("~/Content/themes/base/css", "~/Content/css")
+    </body>
+</html>

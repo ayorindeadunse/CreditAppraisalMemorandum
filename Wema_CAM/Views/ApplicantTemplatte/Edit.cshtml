@@ -1,0 +1,148 @@
+﻿@model Wema_CAM.Models.ApplicantsBrief
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ApplicantsBrief</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ApplicantID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ApplicantID)
+            @Html.ValidationMessageFor(model => model.ApplicantID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ApplicantType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ApplicantType)
+            @Html.ValidationMessageFor(model => model.ApplicantType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AccountNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AccountNumber)
+            @Html.ValidationMessageFor(model => model.AccountNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LegalIdentityName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LegalIdentityName)
+            @Html.ValidationMessageFor(model => model.LegalIdentityName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.YearOfIncorporation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.YearOfIncorporation)
+            @Html.ValidationMessageFor(model => model.YearOfIncorporation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RCNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RCNumber)
+            @Html.ValidationMessageFor(model => model.RCNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BusinessAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BusinessAddress)
+            @Html.ValidationMessageFor(model => model.BusinessAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NameOfAuditors)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NameOfAuditors)
+            @Html.ValidationMessageFor(model => model.NameOfAuditors)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NatureOfBusiness)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NatureOfBusiness)
+            @Html.ValidationMessageFor(model => model.NatureOfBusiness)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Industry)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Industry)
+            @Html.ValidationMessageFor(model => model.Industry)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductRange)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductRange)
+            @Html.ValidationMessageFor(model => model.ProductRange)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MajorClients)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MajorClients)
+            @Html.ValidationMessageFor(model => model.MajorClients)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreationDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreationDate)
+            @Html.ValidationMessageFor(model => model.CreationDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateLastUpdated)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateLastUpdated)
+            @Html.ValidationMessageFor(model => model.DateLastUpdated)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UpdateUserId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UpdateUserId)
+            @Html.ValidationMessageFor(model => model.UpdateUserId)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

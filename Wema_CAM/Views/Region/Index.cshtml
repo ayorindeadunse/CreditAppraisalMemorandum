@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Wema_CAM.Models.Region>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jtable/jquery.jtable.js")" type="text/javascript"></script>
+
+<h2></h2>
+
+
+<div id="FormTemplate"></div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#FormTemplate').jtable({
+            title: 'Region List',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            defaultSorting: 'Name ASC', //Set default sorting
+            actions: {
+                listAction: 'Region/GetRegionList',
+                deleteAction: 'Region/DeleteRegion',
+                updateAction: 'Region/EditRegion',
+                createAction: 'Region/AddRegion'
+            },
+            fields: {
+                RegionId: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                RegionName: {
+                    title: 'Name',
+                    width: '23%'
+                }
+                ,
+                CreationDate: {
+                    title: 'Date Created',
+                    width: '23%',
+                    create: false,
+                    edit: false
+                }
+                ,
+                DateLastUpdated: {
+                    title: 'Date Updated',
+                    width: '23%',
+                    create: false,
+                    edit: false
+                }
+                ,
+                UpdateUserId: {
+                    title: 'Updated by',
+                    width: '23%',
+                    create: false,
+                    edit: false
+                }
+            }
+        });
+
+        //Load student list from server
+        $('#FormTemplate').jtable('load');
+    });
+ 
+</script>
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RegionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegiondId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateLastUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateUserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegiondId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateLastUpdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateUserId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>*@

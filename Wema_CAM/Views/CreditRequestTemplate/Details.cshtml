@@ -1,0 +1,162 @@
+﻿@model Wema_CAM.Models.CreditRequestSummary
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CreditRequestSummary</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ApplicantID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ApplicantID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CAMId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CAMId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FacilityID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FacilityID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Facility)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Facility)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FacilityAmount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FacilityAmount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ApplicationType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ApplicationType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Purpose)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Purpose)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Tenor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Tenor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.InterestRate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InterestRate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProcessingFee)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProcessingFee)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ManagementFee)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ManagementFee)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LCCommission)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LCCommission)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OtherCharges)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OtherCharges)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COTRate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COTRate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SourceOfRepayment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SourceOfRepayment)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModeOfRepayment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModeOfRepayment)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Security)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Security)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Guarantee)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Guarantee)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreationDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreationDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateLastUpdated)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateLastUpdated)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UpdateUserId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UpdateUserId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
